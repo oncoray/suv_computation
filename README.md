@@ -8,11 +8,11 @@ Our goal is to standardize how DICOM PET images are converted to SUVs – an ess
 
 We are happy to introduce the first version our manual for standardized uptake value (SUV) computation: 
 
-[Manual](https://michaelvacha.github.io/suv_computation/suv.html)
+[Manual](https://oncoray.github.io/suv_computation/suv.html)
 
 The .docx version of the manual is available for download here:
 
-[Manual - .docx version](https://github.com/michaelvacha/suv_computation/blob/main/manual/suv.docx)
+[Manual - .docx version](https://github.com/oncoray/suv_computation/blob/main/docs/suv.docx)
 
 Digital reference objects (DROs) and the final version of the manual will be released in subsequent updates.
 
