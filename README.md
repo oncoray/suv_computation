@@ -6,7 +6,7 @@ For that, we are developing a set of [digital reference objects (DROs)](https://
 ## Changelog
 
 #### [v1.1.1] - 2026-03-16
-A new version of the RTStruct files was released with improved compatibility. 
+A new version of the RTStruct files was released with improved compatibility. The region of interest is called `DRO_mask`.
 Additionally, the contour now covers the whole volume of the reference object.
 
 #### [v1.1.0] - 2026-02-04
