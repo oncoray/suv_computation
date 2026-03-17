@@ -1,37 +1,47 @@
-# Standardizing SUV Computation
+# Standardizing SUV Computation (IBSI-SUV)
 
-## Project Aims
+Our goal is to standardize how DICOM PET images are converted to standardized uptake values (SUVs) – an essential step in PET image analysis. 
+For that, we are developing a set of [digital reference objects (DROs)](https://github.com/oncoray/suv_computation/blob/main/DRO) together with a [manual](https://oncoray.github.io/suv_computation/suv.html) including usage instructions.
 
-Our goal is to standardize how DICOM PET images are converted to SUVs – an essential step in PET image analysis. 
+## Changelog
 
-## Current Status
+#### [v1.1.1] - 2026-03-16
+A new version of the RTStruct files was released with improved compatibility. The region of interest is called `DRO_mask`.
+Additionally, the contour now covers the whole volume of the reference object.
 
-We are happy to introduce the first version of our manual for standardized uptake value (SUV) computation as well as the digital reference objects (DROs) for SUV conversion verification. 
+#### [v1.1.0] - 2026-02-04
+RTStruct files (DICOM radiotherapy structure sets) were added for each DRO as an alternative for NIfTI masks. 
+Furthermore, the file structure was changed. From now on, each DRO is one series of the same study.
 
-You can clone the whole repository via https:
+#### [v1.0.0] - 2026-01-28
+We are happy to introduce the first version of our manual for standardized uptake value (SUV) computation as well as the digital reference objects (DROs) for SUV conversion verification. The final versions will be released in subsequent updates.
 
+## Getting the Data
+
+You can clone the whole repository via HTTPS:
 ```bash
 git clone https://github.com/oncoray/suv_computation.git
 ```
 or via ssh: 
-
 ```bash
 git clone git@github.com:oncoray/suv_computation.git
 ```
+The DRO DICOM directory includes a mask subdirectory with a NIfTI mask for feature extraction. More details on their use can be found in the [manual](https://oncoray.github.io/suv_computation/suv.html).
 
-You may as well inspect the files separately:
+## Feedback and Support
 
-- [Manual - online version](https://oncoray.github.io/suv_computation/suv.html)
+Please report issues or provide feedback by contacting:
+- [Michael Vácha](mailto:m.vacha@hzdr.de)
+- [Alex Zwanenburg](mailto:alexander.zwanenburg@nct-dresden.de)
 
-- [Manual - .docx version](https://github.com/oncoray/suv_computation/blob/main/docs/suv.docx)
+We welcome feedback on:
+- Extracted SUV values
+- Technical issues with reading files or SUV computation
+- Suggestions for future versions
 
-- [DRO dicom directory](https://github.com/oncoray/suv_computation/blob/main/DRO)
-
-The DRO dicom directory includes a mask subdirectory with a nifti mask for feature extraction. More details on their use can be found in the manual.
+## License
 
 The manual and the digital reference objects (DROs) are licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
 
-The final versions will be released in subsequent updates.
-
-© 2026 Michael Vácha
+**© 2026 Michael Vácha & Alex Zwanenburg & The image biomarker standardisation initiative (IBSI)**
 
