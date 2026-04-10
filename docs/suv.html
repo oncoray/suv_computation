@@ -630,7 +630,7 @@ were either:</p>
 <li>different in each slice (N=1698, 54.7%)</li>
 <li>rather constant with a few exceptions (N=391, 12.6%) - we noted the
 exceptions typically included slices with the highest uptake (e.g.,
-slices containg the tumor region).</li>
+slices containing the tumor region).</li>
 </ul>
 <p>In our dataset, all PET imaging series had Rescale Intercept
 attribute present and its value was zero.</p>
@@ -697,7 +697,7 @@ processing of the DICOM file.</p>
 <h4>Units = “GML”</h4>
 <p>Another common value of the Units (0054,1001) attribute is grams per
 milliliter (“GML”). This indicates the activity concentration was
-already normalized. In most cases, the normalization corresponds to
+already normalized. In most cases, normalization corresponds to
 body-weight normalization (BW), where the SUV voxel value equals the
 stored value multiplied by the rescale slope.</p>
 <p><span class="math display">\[
@@ -744,8 +744,7 @@ Additionally, the following attributes are required:</p>
 <li><p>Patient’s Sex (0010,0040) - Sex of the patient - M (male), F
 (female) or O (other)</p></li>
 </ul>
-<p>In turn, this factor (LBM or IBW) can be used for the
-normalization:</p>
+<p>In turn, this factor (LBM or IBW) can be used for normalization:</p>
 <p><span class="math display">\[
 \text{SUV}_{\mathrm{lbm}} = \frac{\scriptstyle A_c \, \text{factor} \,
 10^{3}}{\scriptstyle D}
@@ -790,27 +789,27 @@ activity concentration or directly to SUV values. SUV scale factor
 allows direct conversion of the voxel values to SUV<sub>bw</sub>. The
 formula is mentioned in Philips conformance statements (here, for <a href="https://www.documents.philips.com/doclib/enc/fetch/2000/4504/577242/577256/588723/5144873/5144488/5144390/DICOM_Conformance_statement_forIngenuity_TF_PET_CT.pdf">Philips
 Ingenuity</a>):</p>
-<p>‘(7053,1000) DS SUV Scale Factor: This value only applies when Units
-(0054,1001) is equal to CNTS. The SUV Scale Factor is used to convert
-the voxel data from counts to an SUV value. This is done by using the
-formula SUV Value = ((SV x m) + b) x f, where: SV = original stored
-voxel value, m = Rescale Slope (0028,1053), b = Rescale Intercept
+<p><em>(7053,1000) DS SUV Scale Factor: This value only applies when
+Units (0054,1001) is equal to CNTS. The SUV Scale Factor is used to
+convert the voxel data from counts to an SUV value. This is done by
+using the formula SUV Value = ((SV x m) + b) x f, where: SV = original
+stored voxel value, m = Rescale Slope (0028,1053), b = Rescale Intercept
 (0028,1052), f = SUV Scale Factor (7053, 1000). If the SUV Scale Factor
 is 0.0, then the voxel data cannot be converted from counts to an SUV
-value.’</p>
+value.</em></p>
 <p>The Activity Concentration Scale Factor allows the conversion of the
 voxel values to Bq/ml, as explained in the conformance statement (here,
 for <a href="https://www.documents.philips.com/doclib/enc/fetch/2000/4504/577242/577256/588723/5144873/5144488/5144390/DICOM_Conformance_statement_forIngenuity_TF_PET_CT.pdf">Philips
 Ingenuity</a>):</p>
-<p>‘(7053,1009) DS Activity Concentration Scale Factor: This value only
-applies when Units (0054,1001) is equal to CNTS. The Activity
+<p><em>(7053,1009) DS Activity Concentration Scale Factor: This value
+only applies when Units (0054,1001) is equal to CNTS. The Activity
 Concentration Scale Factor is used to convert the voxel data from counts
 to Activity Concentration (in Bq/ml). This is done by using the formula
 Activity Concentration Value = ((SV x m) + b) x f, where: SV = original
 stored voxel value, m = Rescale Slope (0028,1053), b = Rescale
 Intercept, (0028,1052), f = Activity Concentration Scale Factor (7053,
 1009). If the Activity Concentration Scale Factor is 0.0, then the voxel
-data cannot be converted from counts to Activity Concentration.’</p>
+data cannot be converted from counts to Activity Concentration.</em></p>
 <p>In case none of the factors is provided, counts (CNTS) can be
 converted to counts per second (CPS) by dividing by the actual frame
 duration in seconds, i.e., the Actual Frame Duration attribute
@@ -923,7 +922,7 @@ factor. The Activity Concentration Scale Factor never appeared without
 the SUV scale factor. 10 series (6.6%) stored none of the factors. None
 of these 10 series was dose calibrated and the Dose Calibration Factor
 was never present which would disable SUV conversion.</p>
-<p>The Philips conformance statements don’t specify, whether the type of
+<p>The Philips conformance statements don’t specify whether the type of
 SUV acquired by applying SUV scale factor and none of the analyzed
 series had the SUV Type (0054,1006) stored. However, in all 136 series
 with both factors present, the SUV scale factor corresponded numerically
@@ -1034,8 +1033,8 @@ mentioned formulas.</em></strong> <strong><em>When the Units (0054,1001)
 are set to “CM2ML” and the SUV Type (0054,1006) is set to “BSA”, and the
 Patient’s Weight (0010,1030) and the Patient’s Size (0010,1020) have a
 positive, non-zero value,</em></strong> <strong><em>the stored voxel
-values can be converted directly to SUV<sub>bw</sub> using the above
-mentioned formulas.</em></strong></p>
+values can be converted directly to SUV<sub>bw</sub> using the
+above-mentioned formulas.</em></strong></p>
 <p>Justification: In this case, the voxel values correspond to another
 SUV type and have to be converted to SUV<sub>bw</sub>.</p>
 <p><strong><em>When the Units (0054,1001) are set to “CNTS” and the
@@ -1066,7 +1065,7 @@ the voxel volume can be computed and has a positive, non-zero value, the
 stored voxel values can be converted to Bq/ml by multiplying by the
 Rescale Slope (0028,1053) and dividing by the voxel volume in
 ml.</em></strong></p>
-<p>Justification: Counts / s can be converted to Bq / ml by mutliplying
+<p>Justification: Counts / s can be converted to Bq / ml by multiplying
 by the dose calibration factor and dividing by voxel volume.</p>
 <p><strong><em>If the Units (0054,1001) are not “BQML” and the
 conversion to SUV<sub>bw</sub> or Bq/ml is not possible, SUV computation
@@ -1082,15 +1081,15 @@ SUV<sub>bw</sub> is required.</em></strong></p>
 <h3>Background</h3>
 <p>Patient’s Weight (0010,1030) is often manually entered, which can
 result in missing values or incorrect units. The correct DICOM unit is
-kilograms, values equal to or greather than 1000 indicate that the
-weight was entered in grams. For the SUV formula, the value must be
-converted to grams. Furthermore, patient weight may occasionally be
-incorrectly stored in a different DICOM attribute, particularly
-Patient’s Size (0010,1020).</p>
+kilograms, values equal to or greater than 1000 indicate that the weight
+was entered in grams. For the SUV formula, the value must be converted
+to grams. Furthermore, patient weight may occasionally be incorrectly
+stored in a different DICOM attribute, particularly Patient’s Size
+(0010,1020).</p>
 </div>
 <div id="metadata-analysis-3" class="section level3">
 <h3>Metadata analysis</h3>
-<p>In our dataset, no Patient’s Weight values was equal to or greater
+<p>In our dataset, no Patient’s Weight values were equal to or greater
 than 1000. In 55 (1.8%) series, there was no value.</p>
 </div>
 <div id="digital-reference-object-2" class="section level3">
@@ -1101,7 +1100,7 @@ than 1000. In 55 (1.8%) series, there was no value.</p>
 <h3>Recommendations</h3>
 <p><strong><em>If conversion from Bq/ml to SUV<sub>bw</sub> is required,
 the attribute Patient’s Weight (0010,1030) should be checked that it is
-present and have a positive, non-zero value. Otherwise, SUV computation
+present and has a positive, non-zero value. Otherwise, SUV computation
 is not possible.</em></strong></p>
 <p>Justification: Patient’s Weight is required for conversion to
 SUV.</p>
@@ -1109,10 +1108,10 @@ SUV.</p>
 greater than 1000 should be interpreted as grams while values lower than
 1000 should be interpreted as kilograms.</em></strong></p>
 <p>Justification: Patient’s Weight may occasionally be stored in grams.
-A threshold of 1000 was selected pragmatically, as values equal to /
+A threshold of 1000 was selected pragmatically, as values equal to or
 greater than 1000 kg or below 1000 g are highly unlikely in clinical or
 phantom PET imaging. Note that the SUV formula requires weight in grams
-while the above mentioned LBM/IBW/BSA formulas expect weight in
+while the aforementioned LBM/IBW/BSA formulas expect weight in
 kilograms.</p>
 <p><br></p>
 </div>
@@ -1124,32 +1123,32 @@ kilograms.</p>
 <p>The Radionuclide Total Dose (0018,1074) DICOM field records the total
 administered dose of the radionuclide (within the administered
 radiotracer). It is another attribute that is typically recorded
-manually, which may result in missing values or incorrect units.<br />
+manually, which may result in missing values or incorrect units.
 Furthermore, the unit may not be standardized as different Information
 Object Definitions (IODs) allow either Bq or MBq. The equation expects
 the unit to be Bq.</p>
 <p>For SUV conversion, the administered dose must correspond to the time
-at which the voxel values occurred. This requires a correction of the
+at which the voxel values occurred. This requires correcting the
 administered dose for radioactive decay of the radionuclide between the
-time of administration and the corresponding reference timepoint.
+time of administration and the corresponding reference time point.
 Therefore, it is essential to know whether the images (voxel-values)
-were decay-corrected and, if so, to which timepoint. This information is
-provided by the Decay Correction (0054,1102) attribute, which can take
-one of three values (“ADMIN,” “START,” or “NONE”). As shown below, the
-subsequent correction steps depend on this attribute.</p>
-<p>It is important to note, that SUV is independent of the timepoint to
-which the images were corrected. Therefore, the Decay Correction
-(0054,1102) is not relevant when Units are “GML” or “CM2ML” or when the
-image can be directly scaled to SUV without considering the administered
-dose (Units are “CNTS” and SUV Scale Factor (7053,1000) is applied).</p>
+were decay-corrected and, if so, to which time point. This information
+is provided by the Decay Correction (0054,1102) attribute, which can
+take one of three values (“ADMIN,” “START,” or “NONE”). As shown below,
+the subsequent correction steps depend on this attribute.</p>
+<p>SUV is independent of the time point to which the images were
+corrected. Therefore, the Decay Correction (0054,1102) is not relevant
+when Units are “GML” or “CM2ML” or when the image can be directly scaled
+to SUV without considering the administered dose (Units are “CNTS” and
+SUV Scale Factor (7053,1000) is applied).</p>
 <div id="decay-correction-admin" class="section level4">
 <h4>Decay correction = ADMIN</h4>
 <p>The value “ADMIN” indicates that the PET image data were
 decay-corrected to the time of radiotracer administration. In this case,
 no additional correction of the administered dose is required, because
-it already represents the dose at the timepoint to which the images were
-decay-corrected. The formula is scanner-independent and can be written
-as:</p>
+it already represents the dose at the time point to which the images
+were decay-corrected. The formula is scanner-independent and can be
+written as:</p>
 <p><span class="math display">\[
 \mathrm{SUV}_{bw} = \frac{\scriptstyle U \, W}{\scriptstyle
 D_\mathrm{adm}}
@@ -1178,10 +1177,11 @@ the radionuclide and is computed as <span class="math inline">\(\lambda
 <div id="determining-the-reference-time" class="section level5">
 <h5>Determining the reference time:</h5>
 <p>Unfortunately, there is no single attribute reliably storing the
-reference time across scanners and the reference time determination is
-always not obvious from their conformance statements. A significant
-effort to determine an universal procedurer was marked by The
-Quantitative Imaging Biomarkers Alliance (QIBA). In their <a href="https://qibawiki.rsna.org/index.php/Standardized_Uptake_Value_(SUV)">vendor-neutral
+reference time across scanners of different vendors. Moreover, the
+method for determining reference time is not obvious from conformance
+statements. A significant effort to determine a universal procedure was
+marked by The Quantitative Imaging Biomarkers Alliance (QIBA). In their
+<a href="https://qibawiki.rsna.org/index.php/Standardized_Uptake_Value_(SUV)">vendor-neutral
 pseudo-code</a>, they recommend to primarily use Series Date (0008,
 0021) and Series Time (0008, 0031). Since they acknowledge this
 attribute may be often modified during processing and shifted forward,
@@ -1196,8 +1196,8 @@ private tags, which often remains present in the DICOM metadata, and
 there seem to be no signs of the time component being modified during
 post-processing. GE state in conformance statements of some of their
 models (e.g., <a href="https://www.gehealthcare.com/-/jssmedia/documents/us-global/products/interoperability/dicomworkstation/pet-ct/gehc-dicom-conformance_discoveryseries_5161694-100_rev1?rev=-1&amp;hash=C6EF4B58830A2DFB5E5A38A5DA16D911">Discovery
-ST/ RX/ STE</a>) unlike some other models (e.g., Discovery 710/610 or
-Optima 560), that the value of the private attribute PET scan_datetime
+ST/ RX/ STE</a>) that, unlike some other models (e.g., Discovery 710/610
+or Optima 560), the value of the private attribute PET scan_datetime
 (0009,100D) is used for setting the Series Date and Time. Furthermore,
 in the 2009 <a href="https://qibawiki.rsna.org/index.php/Standardized_Uptake_Value_(SUV)">response
 to QIBA by GE</a>, this private attribute is mentioned to be used for
@@ -1208,8 +1208,8 @@ Analogously, Siemens correct the images to the time stored in their
 private tag Decay Correction DateTime (0071,1022), as can be seen in the
 <a href="https://marketing.webassets.siemens-healthineers.com/c0e861a25663344e/a3fb836ba935/MI_DCS_Vision_VG80.pdf?ste_sid=4472df6cb8103bfe5fad8589b711dce6">conformance
 statements</a>: This attribute is not used in the QIBA strategy.</p>
-<p>Even though the private tags appears to be the most reliable source
-of the reference time, there is no such attribute for Philips, and the
+<p>Even though the private tags appear to be the most reliable source of
+the reference time, there is no such attribute for Philips, and the
 private tags are often missing. For the remaining cases, where Series
 Date and Time cannot be trusted and the private tags are missing, QIBA
 recommends using the earliest Acquisition Time (0008,0032). The
@@ -1219,7 +1219,7 @@ within each series should be identical to the Series Time. However,
 there are multiple reasons why this strategy may have limited
 generalizability: One such case, as already acknowledged by QIBA, are
 multi-injection protocols; other common pitfalls are cropped scans or
-scans where the first bed positions was skipped. Such scenarios require
+scans where the first bed position was skipped. Such scenarios require
 slice-wise solutions. Therefore, we believe the Acquisition Time can be
 used only in slices where it is equal to the Series Time.</p>
 <p>The last option mentioned by QIBA is a reference time
@@ -1229,7 +1229,7 @@ alliance. However, <a href="https://arxiv.org/pdf/2410.13348">Fritsak et
 al.</a> have described the differences in the reference times used by
 GE, Siemens and Philips. Siemens and Philips correct the images to a
 reference time one frame reference time before the time the values
-occured - i.e., follow the equation described in the pseudocode: <span class="math display">\[
+occurred - i.e., follow the equation described in the pseudocode: <span class="math display">\[
 \text{t}_{ref} = \text{t}_{acq} + \text{T}_{ave} - {\Delta{t}}
 \]</span> where <span class="math inline">\({t}_{acq}\)</span> is the
 acquisition time, extracted from Acquisition Time (0008,0032), <span class="math inline">\(\Delta{t}\)</span> is the frame reference time,
@@ -1239,14 +1239,15 @@ time in seconds. The <span class="math inline">\({T}_{ave}\)</span> is
 <a href="https://www.dicomstandard.org/">implementation- and
 radionuclide-dependent</a>. In the majority of clinically-relevant
 cases, <span class="math inline">\({T}_{ave}\)</span> is be computed as:
-<span class="math inline">\({T}_{ave} = \frac{1}{\lambda} \text{ln}
-\frac{(\lambda \text{T})}{1 - e^{-\lambda \text{T}}}\)</span> where
-<span class="math inline">\(\lambda = \frac{\ln(2)}{T_{1/2}}\)</span>,
-and <span class="math inline">\(T\)</span> is the actual frame duration,
-computed as Actual Frame Duration (0018,1242) converted to seconds. This
-leads to the formula:</p>
-<p>In contrast, GE scanners correct the images to a reference time one
-frame reference time before the acquisition time: <span class="math display">\[
+<span class="math display">\[
+\text{T}_{ave} = \frac{1}{\lambda} \text{ln} \frac{(\lambda \text{T})}{1
+- e^{-\lambda \text{T}}}
+\]</span> where <span class="math inline">\(\lambda =
+\frac{\ln(2)}{T_{1/2}}\)</span>, and <span class="math inline">\(T\)</span> is the actual frame duration, computed
+as Actual Frame Duration (0018,1242) converted to seconds.</p>
+<p>In contrast, GE scanners correct the images to another time point,
+which is one frame reference time before the stored Acquisition Time:
+<span class="math display">\[
 t~ref~ = t~acq~ - \Delta{t}
 \]</span></p>
 <p>As we lack PET scans from other manufacturers, no formula can be
@@ -1258,9 +1259,9 @@ provided for these manufacturers.</p>
 <p>Another scenario involves PET images that have not been
 decay-corrected, with Decay Correction set to “NONE”. In this case, we
 must ensure that each image (voxel values) as well as the radionuclide
-dose is corrected to the same reference timepoint. The most
+dose is corrected to the same reference time point. The most
 straightforward would be correcting the dose to the measurement time
-(the time the values occured) separately for each slice:</p>
+(the time the values occurred) separately for each slice:</p>
 <p><span class="math display">\[
 \mathrm{SUV}_{bw}
 =
@@ -1285,9 +1286,9 @@ Radionuclide Total Dose values ranged between 203.5 and 3.182<em>10^09.
 Two distinct peaks at approximately 4 × 10² and 4 × 10⁸ suggest that the
 administered dose was stored in MBq or Bq, respectively (see Fig. 2).
 There were 45 series (1.6%) with Radionuclide Total Dose lower than
-10^4. All were from the ACRIN-NSCLC-FDG-PET collection.<br />
-There were 28 scans with other radionuclides, the Radionuclide Total
-Dose ranged between 2 </em> 10^7 and 1.4541 * 10^9.</p>
+10^4. All were from the ACRIN-NSCLC-FDG-PET collection. There were 28
+scans with other radionuclides, the Radionuclide Total Dose ranged
+between 2 </em> 10^7 and 1.4541 * 10^9.</p>
 <div class="figure" style="text-align: center">
 <img role="img" aria-label="Fig. 2: Histogram of Radionuclide Total Dose (DICOM tag 0018,1074) values for FDG-PET series." src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABvIAAAeqCAIAAAA1xXGkAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAC4jAAAuIwF4pT92AAAgAElEQVR4nOz9eZxU1Z0w/hfdNPsOEXFDEIMjghsSl2ggGjUuODiJY0xiXCJqJjoucYnGqIlkfHR04hI1iTpq1Ij6jAtq1OAeFdG4o2IQkLUREOimodeq7x/9m/rd5/Z2q7q227zff/DqU9zl3OWcc+tT557TLZVKJQAAAAAA4qOs2BkAAAAAAMiMsCYAAAAAEDPCmgAAAABAzAhrAgAAAAAxI6wJAAAAAMSMsCYAAAAAEDPCmgAAAABAzAhrAgAAAAAxI6wJAAAAAMSMsCYAAAAAEDPCmgAAAABAzAhrAgAAAAAxI6wJAAAAAMSMsCYAAAAAEDPCmgAAAABAzAhrAgAAAAAxI6wJAAAAAMSMsCYAAAAAEDPCmgAAAABAzAhr0gVdeOGFPQKqq6uLnSOIDcUnI05X1/PRRx8Fr+nMmTOLm58t6h7bog4WOq/U6itKhBsD2KJ0L3YGIPeampoaGhqKnQuIJcUnI05X15NKpYLXNJlMFjEziS3sHtuiDhY6r9TqK0qEGwPYouitCSXqoYceGjdu3PDhw//zP/+zqamp2NkpufxA7ChEXY9rCl1VKpVav379woUL33jjjb/85S+PPfbYE0888dxzz7333ntLly7VlRgASoTemuTYQQcdNGfOnOa/hw0btmzZsrIy0fOMzZkz57jjjmv++4ILLmhqarrooovkB+JLIep6XFO6gKqqqrFjx65du7Y5OXPmzGnTpoWWufTSS6+99trO7GX+/PmjRo3KbrO9e/feZpttvvrVr44ZM2bffffda6+9dtxxx/Ly8s7kpx1ffvnlk08++cQTTzz55JM1NTXtLNmrV6/JkycfccQRhx566M477+xxF9IaGhrGjx+/cOHC5uTVV1993nnnFTdLQBemASaXli9f/sorrzT8r5UrV7711lvFzlQsPfHEE8Hk7bffXqycNCu1/EDsKERdj2tK3KVSqaOPPrqysrL5se3www9vGdNM/O/gAJ2RSqWy3mxVVdUnn3zy+OOPX3/99ccdd9yYMWP69et37rnnvv/++7k9Fa+//vrhhx8+dOjQE0888cEHH2w/pplIJGpra59++umzzz57l1126du379lnn11VVZXDLEF8VVRUPProo+lSfP7557/55pvFzhTQZQlrkkt33nln6JPrrruuKDmh63n00UcfffTRv/71r8XOCAB0BXfcccfLL7/c/Hd5efl///d/Fzc/EdXW1v72t7/dfffdd99995z8fL5kyZIDDjhg//33f+aZZ7LO0p133tm7d+/OZwa6hl122SXYQ/Ooo46qra0tYn6ALkxYk5xpampq+TLRgw8+uGHDhqLkJ9aOPPLIYPLUU08tVk6aFT0/K1eunDZt2rRp037yk58UeNeQE0UvROSca0qsLV++/PTTT08nb7nllqFDhxYxP1l4//3399lnn7POOqu+vj7rjdx7770jR458/fXXW/7Xdttt98Mf/vCqq676wx/+cNddd912222XXnrp1KlTR4wY0XLhK664oqKiIutsQNczY8aMwYMHN//9xRdfnHXWWcXND9BVCWuSMy+//HKrA6g/9NBDhc9M3O2333733XffyJEj+/bte9VVV11wwQVbeH5eeumlAu8RcqvohYicc02JtR/84Afp+ZFHjBgRPS4/f/78ZIZGjx6d3WYbGxtra2srKyvfeeedO+644/DDD2+54s033zxu3Lj169dHP/ZmqVTqzDPP/OEPfxj6fMKECQ8//PC6deuWLl16zz33XHrppaeddtqPfvSj008//aqrrnrsscdWrFhRVVX1/PPPn3jiiem1fvzjH2eaAejaevXq9Yc//CGdvP3223M7dgRAM1MGkTO/+c1v0n/vt99+6d+9f/3rX5966qndunUrUr7i6oQTTjjhhBOKnYv/v+Lm54EHHijWriFXSq1Q03muKTE1Z86cF198MZ285ZZbok/C071793w81LW62fLy8vLy8uHDhw8fPnyPPfY45ZRTNm7ceO+99/7sZz8Ljn25YMGC8ePHv/vuu9E7nKZSqTPOOCMYc0kkEiNGjJg5c+aBBx7Y4er9+/efMmXKlClTfv/73z/zzDPvv//+oEGDIu4athzTpk0bMWLEypUrm5Onnnrq3LlzfSsEcktvTXJj9erVs2fPTieDMycsWbLkgw8+KEam6CIaGxtnzZpV7FwAQFeQSqVOPvnkdHK77babOnVqEfOTkX79+p1xxhlffPHFSSedFPx82bJlU6ZMaWxsjLidG2+8MRTT/M53vrNo0aIoMc2gXr16HXPMMZdddllGa8EWory8/NZbb00n33rrreAPKgA5IaxJbtxzzz3pv0eNGrXrrrsedNBB6U9uuOGGYmSKLmLevHnpF+UAgM6YO3fuJ598kk7+x3/8R1lZzL4R9OnT57//+79///vfBz/84IMP/v3f/z3K6h988ME555wT/OSMM8548MEHe/bsmctcAonEkUce2b9//3Ty/PPPL2JmgC4pZg8xlKZkMjljxox0srkLQHCQpjvvvHPTpk1FyBldwpNPPlnsLABAF3HFFVek/y4rKzv22GOLl5dOmT59+nXXXRf85JZbbulw8L6mpqajjz46+MmUKVN+97vfeTEW8qF79+4///nP08l33nnn008/LWJ+gK7H2JrkwJw5c9atW5dO/su//EsikTjssMOCyzz22GPf+973OrmjVCq1Zs2axYsXr1mzpr6+fuDAgdtss82oUaNCU0/m8MG0trZ2wYIFy5cvr62tHTBgwNZbb73jjjv27t27wxVXr169ePHiVatWpVKpQYMG7bDDDiNGjOjRo0euMhZdMplcsWLFkiVL1qxZU1ZWNnjw4O2333748OGF6ZLQfMm++OKLysrKmpqabt269e/ff8SIEcOGDRsyZEiUK7V8+fJQd4zOSyaTy5cvX7FixerVq5PJ5ODBg7fZZpsddtght3OYJpPJxYsXL168uLq6umfPnkOGDNl+++1bnT61MHkrfPGJLrtzlUqlqqqqKisrly1btmnTpm7dug0cOHDbbbcdPnx43759O5ml0jxdX3755dKlS1evXl1TU1NRUbHVVluNGDFim222yXk2iltv5EpVVdWyZctWrVpVXV1dVlY2aNCg5hH6BgwYUOysJRIFvMcKU+O1r5AFKk/FpPPNWVsKfIEqKyuffvrpdHL69Ol9+vTJx44K49xzz33qqaeee+659CfTp0+fM2dOO6s89NBDn3/+eTrZq1evRx55JHb9VXMo3y1LKpVatWrV559/nr7Dd9hhh+222y76cK65kr9SnKvmJq8PNpnKYdV0yimnXHLJJenkddddl/Nne2CLloJOmzZtWvqOGjRoUFNTU/Pne+65Z/rzXXbZpTO7WLdu3YwZM9oaCf573/vexx9/nF44NMJRVVVVW5udN29exf+6/PLLg/81Z86cI488stXdTZ48+cUXX2x1gxs2bLj++uu33nrrtvL59ttvRzneYMYqKioeeOCBLA7h888/v+CCC9r6unLkkUc+/fTTyWQyt/lJ+/DDD6dPn97O81xFRcW0adMefvjhti7QsmXLQiNnpVds1QsvvNBhrj7++OMf//jHvXr1ajVLhx122HPPPZe+gaOfk/PPPz/4X7W1tddee23LB9CpU6cWJm8heSo+0eX2XNXV1T377LMnnXRSO1/FJ06ceNddd9XX12eR2wLUNhELUdrixYsvueSSYcOGtZqlXr16nXzyye+++27E4pwqVL1x+eWXBw95xYoV0Q/53nvvDa77ySefRF93yZIlv/nNb9oJiw8bNuy888578803Wy1QH374YXDh+++/v60dZX1NC1Yk81erRFewg815MUnrfHPWlqJcoBtvvDG4l3feeafDVS666KLgKp999llOcpKrzS5ZsiR06hYtWtTWwslkcttttw0ufMcdd2R5ACUgen3VUv6KTNq6det+9atfDR48uNVSM3369H/84x/B5b/73e+ma9ScPH6k5akUd7K5Scv5g01nboxUfqqmr33ta+ktlJWV1dXVZbQ6QDuENemsYD/NRCIR/Ib85z//Ofhf8+fPz2L7yWTytttui/Ir+vnnn9/cxN50003Bz9t5QAm2+gcffHDzhxs3bgy9ndSqI444YvPmzcF83nPPPVF+ef7hD3/YYVse/XGk1UOor68/99xzO8xJIpHYY489lixZ0uFVyOjxaOnSpcFnlyimTZsWPCeNjY3B2Qwiaj+suXbt2iOOOCLKdsaOHbtgwYKMzkkwBjd//vytttqq1S1fdtllhclbWl6LT3S5OlcrVqy4+OKLo/d6Hjx48CuvvFIipyu77xgbNmyI3s994sSJEeMChak3fvGLXwTXyiisGRyvOZFIBCNf7Vi3bt13v/vdiKcrkUi89NJL7Z+cROTqt/0l0wpWJPNXq0RXsIPNUzFJ5aI5a0sRL9CYMWPSG+/Tp0+U2ESJhzVTqVToPfrQrzVB8+bNCy7Zt2/f7H4AKxEl1bKE3H777VGein/605+mi0zw949chTXzVIpz0tyk8vZgk3VYM39V05/+9KcoJwQgC8KadNbvfve7YCu1ePHi9H9VV1cH/+ucc87JdOONjY3HH398xJY+kUgcdthhtbW1Dz30UPDDiIGGXr16pVKpqqqq4BN/+yZOnNjQ0JBKpZLJ5E9+8pPo+Zw8eXL7XySy+17dfAibNm2aNGlS9Mz06NGjwwfWjPKTxVtFe+65Z3Aj2Y3E2k5Y88MPPwyOVt6hsrKyp59+Ovo5SXdGnjt3bjuH/+c//7kweWuW7+ITXU7OVUNDQ0VWr2S+/PLLpXC6sviO8e6772bx0lnEztTp5fNXbxQ4rDl37tyMTlefPn2aK/B2Tk4ip2HNghXJ/NUq0RXsYPNaTDrfnLW15WJdoNWrVwe3fNppp0VZq/TDmqG5lQcPHtzWkhdeeGFwybZ+boyLkmpZ0pLJ5GmnnRZ94xMmTNi4cePmzZuDH+bq8SMfpThXzU3+HmyyC2vmtWpasWJFcN2zzjor4ooAHTK2Jp2SSqWuuuqqdHLcuHEjR45MJ/v163fcccc9+OCDzcmbbrrp6quvjj40WyqVOvHEEx944IHQ57vuuuvUqVPHjBmTSqUWL1786quvvvzyy80zZT/zzDPf/OY3L7744iyOpba2du3atccee+yCBQuaPxk9evRhhx2222679e7de9WqVc8999zs2bODq7z11lszZsy4/PLLr7vuultuuSX9+aRJk77xjW/svPPO5eXlixcvfuyxx0ID2L/44oszZ87s/GCjLQ/hyy+/POGEE+bOndv8SY8ePaZMmTJp0qQddtihrKxs2bJlL7zwQujpv76+fsqUKQsXLuz8IEdVVVUTJ05samoKfjhhwoTDDjts5MiR/fr127hx4/z5819//fW33noruMyVV17ZyV23Y/78+RMmTAjNpT5x4sRDDjlkp5126tat26JFi2bPnv3GG2+k/zeZTB5++OGvvvrq/vvvH2UX//jHP5r/3W+//dKHP3jw4O9973sTJkwoKyv75JNPHnnkkZ122qlgeStw8Yku63PVvXv3c84559prrw0dzte//vXx48f37du3qqrq7bfffuCBB+rr64PLTJ06dfny5e0PHleCp2vu3LktO5gMGjTo8MMPnzRp0qBBgzZt2vTee+89++yzwUHiEonE8ccfv3HjxuCkbe0rer2RE3PmzNlvv/1CH/bp0+db3/rWAQccMGzYsM2bN3/88cezZ89OTwB99tlnd+9euKeggt1jBajxOlSwg81fMclfc1bcC/Tmm28Gk8ccc0wnN1giQrfBunXrvvzyyyFDhrRcMnRbZhR87wIK07JcdNFFf/zjH0Mfjh8/furUqaNHj25qalqwYMHf/va31157rfm/3n///cmT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uRdDKuCVV16JsuVSO12hjgxZPPGHvnrlY4aBAojYgyNUlIp++VpVmHusRGq8whxs4YtJ55uzUrhAobBRFuetZK1cuTL0WnSrbzR/5StfCZ6EZDIZ6oLXVRWmyJRaexrSyVKc8+Ymfw82GSlw1RSapyvrPuMAQcKaZKauru7mm2/OyaZmzZoVGt89bejQoaGdZrTlAk9NQ/v69et34oknfvrpp5988skpp5wS+ow6c9YAACAASURBVN8FCxaMGTMmH6/AhEZKbWhoyOiluby+QJfXvHW94rNu3bp99tkn2Ifi0ksv3bhx4w033HD44YfvsMMO/fv3b34pMrhWxG5ipXa6QgOPZjGa/qJFi4LJ0hn5NyNRhgRNtBg+rwTv3kSh7rESqfEKc7DFKiadac5K4QKFRgPsSnMQP/7448HkAQcc0GrXv27duoWm537mmWfym7PSUJgiE3qLPNMKuTAT02ddinPb3OT1wSYjBa6a1q5dG0yW5tAxQOwIa5KZZ555JtiJZubMmalM3HbbbcGt3X///a3uJTQw+fr16zPK5Bby23vsjB079o477li3bl1o/qjq6uoDDzywM5NUtCr0AlplZWVut98Zec1b1ys+v/zlL4PfwS677LKrrrqqw7fVIvZGKbXTFeph1NZvP+3o/NQQpSDiTx2jRo0KJtetW5eX3HROYe6xEqnxCnOwRS8mWTRnpXCBQnGZiD8elL5kMnnllVcGP/nJT37S1sKhSNZvf/vbfGWrlBSmyIQmtMm0+K9YsSLTXHVGpqU4t81NXh9sMlLgqil0lWP6yytQaoQ1yUxwsqCysrKWI3C37/jjjw8mZ8yY0epLHOPGjQsmo09V2eyTTz7JaHkKadCgQdddd927774bnKVk2bJlzz77bG53tOeeewaTwdd8ii6veetixae+vj7YQ3zw4MG//OUvo6wYcbioUjtd++67bzCZ6UDGNTU1a9asSScHDRpUOi+hZ/TKXsQDD12+0Ey1JaIw91iJ1HiFOdgSKSYZNWelcIFCnekyjTqVrMcffzwUizn66KPbWvjggw8OJj/55JP33nsvXzkrGYUpMv/0T/8UTIbmpu/Qp59+mtHyORG9FOewucn3g01GClw1LV++PJgswHjuwJZAWJMMfP7553//+9/TydNPPz3T1mjgwIHf/e5308nKysq333675WJjx44NJp9//vnou2hsbHznnXcyyhWFt/vuu7/00kvBTx599NHc7uLAAw8MJu+9997cbr8z8pq3LlZ8Pvvss2Dyhz/8YcSRmEJdS9pSaqdrv/32CyZnzZqV0eqhiX0z/eUpt0Lfe6O/spdMJp977rkoSx5wwAHBZGm+T1qYe6xEarzCHGxJFZOIzVkpXKDtt98+mAzFF2Kqurr6xBNPDH5y3nnn9e/fv63l+/fvf9xxxwU/Oemkk0ptFMicK0yRCXXWzqj4p1KpdqYSzbcopTiHzU2+H2wyUuCq6f3330//3fyifV53B2whhDXJwO233x5M/vSnP81iI+eff34wef3117dcJvT4dccdd0R/4izKj71kYY899th2223TyYjPatEnct17772DyQceeCCLwaTyJK9562LFJ9TbK/SOWzsee+yxKIuV2unafffdg4Nn3X333RkNNxYa6ONf/uVfcpazzIXeUoweQ/n0008jlvRQUbrzzjtLcBaUwtxjJVLjFeZgS62YRGnOSuEChd5EzkeIpMAaGxuPPPLI4Nv0FRUVv/jFL9pf66qrrgom33333d///vd5yV/JKEyRCfUJzaj4r1ixIjTqYoF1WIpz2Nzk+8EmI4Wsmmpra4OdxEPtBUDWhDWJqrGxMRiCHDVqVOhlk4j22WefYcOGpZP3339/y9GdRo4cGfylfcGCBdFfEcrVjEYUwOjRo6MsFhxQfOXKlRE33r9//2OOOSadTCaTV199dUbZy5+85q2LFZ/Ql6KIT9vLli2LOGFoqZ2uHj16BId+27Rp0//8z/9EXHf16tXBfhZlZWWh1y0L7Ktf/Wow+cILL0Rc8b/+678iLrntttsGJ7RduXJl9L0UTGHusRKp8QpzsCVYTDpszkrhAgWjNolEIvj+TRzV1dUdddRRoar+zjvv7HCk1J133jk0wuaZZ54Z6qzXxRSmyIwYMSI4fuuiRYveeuutiHu55557Ii6ZP+2X4hw2N/l+sMlIIaumVatWBZMTJ07M046ALY2wJlE9//zzwXb38ssvz246zrKystAP6Q8//HBomW7duv3sZz8LfnL66adH+VF01apVt956axa5ovCampreeOONdHK33XZra8ngg2ZtbW303/Mvu+yyYPLXv/51puNJ5U/+8tbFis/w4cODyb/+9a8drpJMJv/1X/814vZL8HRdfPHFofxEGU4rlUqddtppwU/OOeec4g7GH/qKeOONNwZnnGvLihUr/vCHP0TfS6gonXLKKYWZTje6gt1jpVDjFexgS6qYRGzOin6BBgwY0KdPn3QySnVasj788MN/+qd/Cr0IfOKJJ37/+9+PsvrNN988dOjQ4CeTJ09+5JFHcpnFElOYIhN6wo9Y/Dds2HD55Zd3uFheRSnFuWpu8v1gk6mCVU3z5s0LJkPDegJkTViTqELv7Bx77LFZb+oHP/hBMPnrX/+65VsqoTfc586de/7557f/MktNTc2hhx6ada7opLq6uieeeCL6E94NN9wQXLid/jKhn3Ojvyy29957h+YN2GeffaL3HUgmk8ExgHIrr3nrSsVnxx13DCZnzZrV/hzZDQ0NP/rRjzIaoqvUTtfo0aPPPPPMdLKqquqQQw5p//tnKpW65JJLgq+nVVRUFP1b4k477RTsuLd27drQd6eWNm7cmGnXueOPP37rrbdOJ5csWTJt2rS6uroOVyzkaHqFucdKpMYrzMHmtZjkqTkr+gXq1q3bUUcdlU6uXbu2uK/9ZiGVSs2bN++4444bP378okWLgv91yCGH3HHHHRF/ce/du/cLL7xQVvb/fA869thjzzzzzHzMypJIJBobG3v8v1588cV87KgthWlZTjrppOB03u+8886//du/tR/Z3Lx582GHHRblR6+M5KMU56q5KcCDTUYKVjWFfofYZ599Iu4CoAMpiGDFihXB2+aEE07o5AaPOOKI4AY//PDDlsv853/+Z+h2PeaYY5YtW9ZyyYaGhr/+9a+hH97Tqqqq2spGaOic+++/P2L+Q5G1ysrKiCsedthh6bX69u3b+YxlfQipVCo0uM8999zTmb00PxyXl5efccYZr7766ubNm9vaWnV19RVXXBHcYEVFxcaNG9tavuWj/4MPPhjxGKuqqlq+j3beeeetWLGirVUaGhree++9iy66qH///rvuumtbi3XmzOc7b6mCFJ/oOnmuQr/nb7311u+8807Lxerr6x9//PH0G3C77rprcK2XX365nV2UWm1TW1u73XbbBZffdtttZ8+e3dTU1HLhTz/99PDDDw/l5PHHH29n+4WpN1Kp1KWXXhrK2E9+8pNWC3vz5Wvr7dGPP/64nb20fJd2zJgxc+bMSSaTrS5fWVn5hz/8YcyYMXV1dS3/N0/Vb2GKZF5rlegKc7D5Kyb5a86KfoHuvvvu4K5nz54dZa2LLroouNZnn33WyWxE32xDQ0NVVdVnn332l7/85YILLgiOYhR08sknNzQ0ZJqBVl8iLi8vP/vss+fNm9fY2Nj+6hs3bnzjjTeCsdF2nutCD9KJjqq1iEqqZWn2pz/9KbTWoYceunjx4pZLNjQ0PPPMM3l6/MhTKc5Vc5PvB5tMW/nCVE3BcTAqKipavfEAsmD2MSK56667gslzzz23kxu88MILn3rqqXTy5ptvbvn22bnnnvvEE08EQ1qPPfbYY489tv/++x9++OE77bRTKpVatmzZ3//+9yeffDL9gvzee+99xRVXhH51pGCamppuu+225tHlx40bt88+++y2227Dhw/v3r17dXX10qVLX3zxxZZjA/3ud79r552mAw44YOjQocFOJccdd9y4ceNOOumk7bbbrqamZvHixa+//vo3v/nNSy65JLRu//7933zzzQkTJgSHULj++uuvv/76CRMmHHzwwePGjevbt29DQ0NlZeXChQvfe++9119/PQcnIoK85q0rFZ9rrrnmW9/6VjpZWVm55557jhs37rjjjmueAWPJkiVvvvnm448/np5nZvTo0XPnzp00aVLEF6lK7XT17Nlz7ty5u+yyS1VVVfMny5cvP+SQQ4YOHfrtb3973333HTJkSG1t7fvvv//0009/8sknodUvv/zyErmIF1988W9/+9uampr0J7fccsstt9wybdq0r3/96yNGjGhsbFyyZMkbb7zxzDPPpHvKDBgw4P777w92K2vfXnvtddNNN5111lnpTxYsWLDvvvuOGDHi6KOP3mefffr161dXV7dkyZJPP/109uzZlZWVOTzGiApzj5VIjVeYg813MclHc1b0C7T//vsHk08++WRxR+ANCs1oFFGfPn3uu+++f/7nf85i3cmTJ7/55puTJ08O1lFNTU033njjjTfe2LzAhAkTdtppp6FDh3bv3r2hoWHdunVffPHF/PnzX3rppS+++CL6vkIzYvXv3z80+nABFKZl+f73v//www8H+3g+++yzO+6449e+9rUjjjhizJgxqVRq6dKlb7/99qxZs2pra5uXGT9+/I9//ON///d/z9Gx/v/kvBTnqrkpwINNRgpQNa1duzY4c+C3v/3tUHdpgOwVM6ZKTDQ2Ng4YMCB9z2y11VZt/SaZ9TbLyso2bdrUcrHa2tqDDjoo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ZoYceuqppz7//PN08q677tJVE8g51QoAAGxBunXr9uCDD6aTS5Ysue+++4qYny4sOCf1NddcoxNiS6lU6qc//Wnwk2nTphUrM+RQfX39qaeemk4ec8wxBx10UBHzA3RVwpoAALBlGTt2bHCGlh//+McbNmwoYn66queee675j759+x5zzDHFzUwBNDU1ZbrKTTfd9Nprr6WTZWVl3/jGN3KaKYrjqquu+uKLL5r/HjRo0L333lvc/ABdlZnQAQBgi5NMJvfff/833nijOXn88cf/+c9/Lm6WiLuf//znGzZsOPXUU/fcc88OXzdubGy88sorr7rqquCHF1100dVXX53PPFIIixYtGj16dDr5yiuvfP3rXy9ifoAuTFgTAAC2RBs2bNhll13Wrl3bnHziiScOPfTQ4maJWLv44ov/z//5P4lEom/fvlOnTp0yZcpee+01fPjwgQMH9u7du7y8PJFI1NXVrVy58qmnnpoxY8bKlSuDq2+11VaLFy/u3bt3cXJPjjQ1NU2cOHHevHnNyRkzZlxwwQXFzRLQhQlrAgAA0FnpsGYWevTo8dFHH+200065zRIAXZuxNQEAACia0aNHL1iwQEwTgEwJawIAANBZF1544XXXXTd27Njoq2y99dZ33333p59+uv322+cvYwB0VV5CBwAAIGfWrl378ccfv/fee3//+9+XLFmyZMmS5cuX19bWdu/efcCAAePHj99jjz122223KVOm7Ljjjt26dSt2fgGIK2FNAAAAACBmvIQOAAAAAMSMsCYAAAAAEDPCmgAAAABAzAhrAgAAAAAxI6wJAAAAAMSMsCYAAAAAEDPCmgAAAABAzAhrAgAAAAAxI6wJAAAAAMSMsCYAAAAAEDPCmgAAAABAzAhrAgAAAAAxI6wJAAAAAMSMsCYAAAAAEDPCmgAAAABAzAhrAgAAAAAxI6wJAAAAAMSMsCYAAAAAEDPCmgAAAABAzAhrAgAAAAAxI6wJAAAAAMRM92JngC1UY2NjU1NT899lZWUVFRXFzU+MpFKp+vr6RCLRs2fPYuclTurr61OpVPPf3bt3Ly8vL25+YqSpqamxsVE5zUgymWxoaEgne/To0a1btyLmJ14aGhqSyaRympFgq9qtW7cePXoUNz8xkm5VldOMBFvV8vLy7t19p4iquVVVTjOSLqfNKioqysr0zomquVVVTjPS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AMHImgAAAABAMLImAAAAABCMrAkAAAAABCNrAgAAAADByJoAAAAAQDCyJgAAAAAQjKwJAAAAAAQjawIAAAAAwciaAAAAAEAwsiYAAAAAEIysCQAAAAAEI2sCAAAAAMHImgAAAABAMLImAAAAABCMrAkAAAAABCNrAgAAAADByJoAAAAAQDCyJgAAAAAQjKwJAAAAAAQjawIAAAAAwciaAAAAAEAwsiYAAAAAEIysCQAAAAAEI2sCAAAAAMHImgAAAABAMLImAAAAABCMrAkAAAAABCNrAgAAAADByJoAAAAAQDCyJgAAAAAQjKwJAAAAAAQjawIAAAAAwciaAAAAAEAwsiYAAAAAEIysCQAAAAAEI2sCAAAAAMHImgAAAABAMLImAAAAABCMrAkAAAAABCNrAgAAAADByJoAAAAAQDCyJgAAAAAQjKwJAAAAAAQjawIAAAAAwciaAAAAAEAwsiYAAAAAEIysCQAAAAAEI2sCAAAAAMHImgAAAABAMLImAAAAABCMrAkAAAAABCNrAgAAAADByJoAAAAAQDCyJgAAAAAQjKwJAAAAAAQjawIAAAAAwciaAAAAAEAwsiYAAAAAEIysCQAAAAAEI2sCAAAAAMHImgAAAABAMLImAAAAABCMrAkAAAAABCNrAgAAAADByJoAAAAAQDCyJgAAAAAQjKwJAAAAAAQjawIAAAAAwciaAAAAAEAwsiYAAAAAEIysCQAAAAAEI2sCAAAAAMHImgAAAABAMLImAAAAABCMrAkAAAAABCNrAgAAAADByJoAAAAAQDCyJgAAAAAQjKwJAAAAAAQjawIAAAAAwciaAAAAAEAwsiYAAAAAEIysCQAAAAAEI2sCAAAAAMHImgAAAABAMLImAAAAABCMrAkAAAAABCNrAgAAAADByJoAAAAAQDCyJgAAAAAQjKwJAAAAAAQjawIAAAAAwciaAAAAAEAwsiYAAAAAEIysCQAAAAAEI2sCAAAAAMHImgAAAABAMLImAAAAABCMrAkAAAAABCNrAgAAAADByJoAAAAAQDCyJgAAAAAQjKwJAAAAAAQjawIAAAAAwciaAAAAAEAwsiYAAAAAEIysCQAAAAAEI2sCAAAAAMHImgAAAABAMLImAAAAABCMrAkAAAAABCNrAgAAAADByJoAAAAAQDCyJgAAAAAQjKwJAAAAAAQjawIAAAAA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s62tbenSpb/61a82bdr0+c9/vq2tbcgdnnnmmQsuuKC5ufncc89dv359X1/fWC4PAAAAAAhhTLNm0eGHH3755Zdv2bJl48aNV111VWtr65A7fOc735k/f35TU9MVV1yxceNGX74JAAAAABSVJ2umcrncrFmzrrzyyh07dvziF79Yvnz5tGnTBt+hu7v7hhtumD179pve9KZbb71127Zt5VoqAAAAAFA5ypk1i3K53LHHHnvNNdds27bt+eefv+mmm4ZcX+jll19eunTp9OnT3/3ud9977729vb3lWioAAAAAUHYVkTWLcrncEUcccdlllz322GN33313fX39kDs88sgj55xzTmtr64033tjT01OWRQIAAAAA5VVZWXPLli233Xbb29/+9qampg984APd3d2/926dnZ2f+MQn2tra1q9fP8YrBAAAAADKriKy5o4dO+64447Zs2cfcsghS5Yseeqppwb/9h3veMd3v/vdhx566Kyzzhr88507d86fP/+aa64Z28UCAAAAAGVWU8Zt9/T0rF279h/+4R8eeuih1/62qanpE5/4xEUXXXTooYemPznllFN27Nhx9913X3nllbt27Up/uGLFihkzZlx88cVjtmwAAAAAoLzK8GnNQqGwYcOGv/7rv25sbDz77LNf2zT/7M/+bN26dTt37lyxYkWxaaamTZv20Y9+9Le//e2ll15a/OEll1zy6quvjsHKAQAAAIBKMKZZc9OmTddcc820adPmzZt35513FgqFwb9ta2u75ZZbduzY8YMf/GD+/PnV1dWv9zj19fX/+I//ePvtt6c3C4XC3Xffne3SAQAAAICKMRZZc9euXV/+8pePPvroN7/5zStWrCieP1704Q9/+Mknn9yyZcvSpUsPOuigYT7s4sWLTzzxxHT8/e9/fzRXDAAAAABUsGy/W/NHP/rRjTfeeP/99//e386ePXvFihXnnHPO5MmTR/b4l1566aOPPpokyeOPPz7yVQIAAAAAoWSbNc8666x8Pj/kh3V1dR/72McWL178lre85QAff9asWemgo6PjAB8KAAAAAIhiTK+EftJJJ336058+/fTTa2trR+UBBwYG0sHwT10HAAAAAKIbi6zZ0tKybNmyCy+8sK2tbXQfedu2beng2GOPHd1HBgAAAAAqVrZZ89xzz/3oRz96wgknVFVlcm2it7zlLV//+teTJDnqqKOyeHwAAAAAoAJlmzVXrVqV6eO3t7e3t7dnugkAAAAAoNJk8iFKAAAAAIDsZPtpzYGBgTlz5rz3ve/90Ic+dOSRR+ZyueHPffzxx++5554kSVpaWj7zmc9ktkYAAAAAIJhsP635q1/96pe//OV111131FFH3XfffSXNPeyww2666aabbrppxYoVmzdvzmiFAAAAAEA42WbNBx98sDg+7bTTSprb1tZ2zDHHpOPvfe97o7ksAAAAACCybLPm+vXr08EZZ5zR2NhY6vQLLrggHaxdu3Y0lwUAAAAARJZt1vyv//qvdPDe9753BNOPO+64dLBx48ZRWxMAAAAAEFzm362ZDubMmTOC6W1tbeng5ZdfHrU1AQAAAADBZZs1e3p60sGUKVNGML2hoSEddHZ2jtqaAAAAAIDgss2axY9bbt++fQTT9+7dmw5aWlpGbU0AAAAAQHDZZs1jjz02HWzYsGEE05966ql0cPTRR4/amgAAAACA4LL3aHWRAAAgAElEQVTNmgsXLkwHX/jCFwqFQklzBwYGbr755nS8YMGCUV4ZAAAAABBWtllz0aJF6eB3v/vdypUrS5r77W9/u3gB9OLjAAAAAABkmzWPPPLIo446Kh0vWbLkm9/85jAnrlu37i//8i/TcVNT07ve9a5M1gcAAAAABJRt1szlcv/6r/9avHn++eefddZZTz/99OudkF4oFP7zP//z3HPPPfXUU4s//MIXvlBTU5PpOgEAAACAQDLPhSeffPKll15a/JbM1atXr169ura29rTTTjvmmGMOP/zwhoaGnp6ezZs3//d///eaNWt6e3sHTz/99NM//OEPZ71IAAAAACCQsfgU5E033dTR0XHHHXcUf5LP59esWbNmzZr9T/yTP/mT++67L5fLZbxAAAAAACCSbE9CT+VyuZUrV37rW99qbGwc/qxrr732oYcemjRpUnYLAwAAAAAiGousmTrvvPO2b99+1113HXfccfu5W1tb22c/+9lt27b9/d//fVXV2C0PAAAAAIhiTC/F09DQcOGFF1544YVdXV0vvvji1q1bt27d2tXVVVtbe/DBB0+fPr29vX3q1KljuSQAAAAAIJzyXGG8oaFhzpw5c+bMKcvWAQAAAIDQnOUNAAAAAAQjawIAAAAAwciaAAAAAEAwsiYAAAAAEEwZLhnU19fX09NTKBRKmtXU1JTRegAAAACAWMYoaxYKhUceeeQrX/nK6tWrX3nllRE8wsDAwKivCgAAAACIaCyy5ksvvfTnf/7nv/jFL8ZgWwAAAADAuJd51vztb387e/bs7u7urDcEAAAAAEwQmWfN888/f0jTnDlz5vHHHz9lypSqKhcsAgAAAABKlm3W/OUvf/nwww8Xby5fvvyyyy476KCDMt0oAAAAADC+ZZs1v/Od7xTHq1atOv/88zPdHAAAAAAwEWR7GvhPf/rTdDBv3jxNEwAAAAAYFdl+WvPJJ59MB3/7t3+b6YbIzsDAQKFQyOJhB4/7+/tHfRPjVfE/R39/fy6XK+9igvKSK0n6kvOklWTI/zYLhYJnb/jSA4QnrSSDj6pJknjqhm/wUbW8K4nLAaIkXnIjMOS5coAoSXqAsJ+WZMgfcuPvqcviDf54NTb/w5mweaS6uvrAHyTbrLlr1650MHv27Ew3RHZ6e3v37t2b6Sb6+/t37tyZ6SbGpeL+Ram6urq6urrKvYpg+vr67KcjtmfPnnIvIR776YgVCgV76wjYT0esp6enp6en3KsIxl+/B2Lfvn3lXkI83d3dQy7ky/CNv73Vi2H49u7dO8YvgHw+P/5ecq+ntbX1wMtmtieht7a2poO6urpMNwQAAAAATBzZflpzwYIFX//615Mk2b59e6YbIjt1dXVZXLx+3759vb296bimpqa5uXnUNzFe9fX1pZ8oaW1tdRL68O3cubP42f6GhoaGhobyrieQ9ENz9tOS5PP5wZ9zb25urqnJ9oA7nuzZs6evr6+xsbG+vr7cawmjs7Oz+MmLqqqqlpaW8q4nkEKhkJ79MHXq1FE5E2qC2L17d/EUuUmTJk2ePLm86wmkp6eno6Ojurp66tSp5V5LGP39/bt37y7ebGpqqq2tLeN6YknfdtXX1zc2NpZ7LWF0d3d3dnYWb2bxdri8vBUavubm5jF4AaR//abj2trapqamrLdYIaqqRuGjltm+yzrjjDPSrPnkk08uXLgw022RkVwul0U7G/KYo/JqniCKz1VVVZWsOTK5XM5LbvjSl5knrSRDnquqqirPXqm85EriqHrg7KcjZm8tSXFv9aQN35CvD/aSK4k/5EZg3B9VvYscvrHZdwb/F7G3lirbJ2vRokXp4F/+5V+GHI0AAAAAAEYm26w5ffr0iy66KEmSl1566Xvf+16m2wIAAAAAJojMP9r6xS9+cebMmUmSnHvuuevWrct6cwAAAADAuJd51pw8efLTTz89Z86cQqFw6qmnnnLKKWvXrh38lc8AAAAAACXJ9pJBfX1927Zt27Rp0/vf//4rr7wySZKHH344vXZQc3PzrFmzZs6cOWnSpOF8H+qqVasyXSoAAAAAEEW2WbOxsTGfz//eX+3Zs+eJJ5544oknhvlQsiYAAAAAkHLZeAAAAAAgGFkTAAAAAAgm25PQX3nllUwfHwAAAACYgLLNmgcddFCmjw8AAAAATEBOQgcAAAAAgpE1AQAAAIBgZE0AAAAAIBhZEwAAAAAIJttLBu1ff39/Oqiuri7jMgAAAACAWMb005q9vb1r165dunTprFmzqqura/6fsVwDAAAAABDdGGXNQqGwcuXKqVOnLly48NZbb33uuecKhcL+p5x++ul1dXV1dXXLli0bm0UCAAAAACGMRdbs7u6eP3/+3/zN33R3dw9/1sc//vF8Pp/P57/4xS++YQMFAAAAACaOzLNmf3//qaee+sgjj5Q6ccGCBemgs7Pz2WefHe11AQAAAABRZZ41b7jhhkcffbR4c8mSJf/+7/++c+fOxx9/fP8T6+vrzzzzzHS8du3aDJcIAAAAAISS7eV6Ojs7P/3pT6fjww477Cc/+cmhhx6a3mxubn7D6YsWLVqzZk2SJI899lh2iwQAAAAAYsn205o/+MEPil+LObhpDtMRRxyRDp5//vlRXhkAAAAAEFa2WfPee+9NBx/84AdLbZpJksyYMSMdvPjii6O5LAAAAAAgsmyz5oYNG9LBe97znhFMb2hoSAd79uwZtTUBAAAAAMFlmzU3bdqUDg477LARTO/p6UkH1dXVo7UkAAAAACC6bLNmbW1tOih+w2ZJil+p2d7ePmprAgAAAACCyzZrHn300engueeeG8H0H/7wh+ng+OOPH7U1AQAAAADBZZs1TznllHRw1113lTp37969X/7yl9PxGWecMZrLAgAAAAAiyzZrFq8U9MADDzz77LMlzV28eHFxfOaZZ47msgAAAACAyLLNmieccEJbW1s6Xrhw4SuvvDKcWYVCYdmyZd/4xjfSm3/8x388c+bMrJYIAAAAAESTbdasqqr66le/mo5feeWVww477Pbbb+/s7Hy9++fz+XXr1h111FGf+9znij/80pe+lOkiAQAAAIBYarLewGmnnfbJT34yzZT5fP6SSy655JJLTjzxxBkzZhTvc8stt2zevHnDhg3r168fcs30m2++efbs2VkvEgAAAAAIJPOsmSTJ9ddfX11dfd111xV/8uijjw6+w0c+8pHfO/Gqq6762Mc+lu3iAAAAAIBosj0JPZXL5a699tr169dPnz59mFNaWloefPDBK6+8MtOFAQAAAAARjUXWTL373e/esmXLvffeu//Lms+dO3fVqlVbt25dsGDBmK0NAAAAAAhkLE5C//8bq6k5++yzzz777Hw+v3nz5s2bN2/durWjo6Ourm769OltbW3t7e2NjY1juSQAAAAAIJwxzZpFtbW17e3t7e3tZdk6AAAAABDa2J2EDgAAAAAwKmRNAAAAACAYWRMAAAAACEbWBAAAAACCkTUBAAAAgGCyvRJ6a2trPp8flYfat2/fqDwOAAAAABBdtlmzo6NjtLImAAAAAEDKSegAAAAAQDDZflqztrb2De9TKBT6+/t/76/mzp37p3/6p29729tmz5492ksDAAAAAKLK/CT0Yd6zr69v7969zz333H333XfjjTd2dnYmSdLS0rJ8+fLJkydnuUYAAAAAIJhKOQm9pqamtbV13rx5V1999a5du66++uokSdatW/dHf/RH3d3d5V4dAAAAAFBBKiVrDlZbW/uZz3zmqquuSpJk48aNH//4x8u9IgAAAACgglRi1kwtX768ubk5SZJbb711+/bt5V4OAAAAAFApKjdrVldXX3bZZel49erV5V0MAAAAAFA5KjdrJklywgknpIOHHnqorAsBAAAAACpIRWfNQw45JB38+Mc/Lu9KAAAAAIDKUdFZM5fLpYMtW7aUdyUAAAAAQOWo6Ky5efPmdDBp0qTyrgQAAAAAqBwVnTX/7d/+LR3MmTOnvCsBAAAAACpH5WbNF1544c4770zH73znO8u7GAAAAACgclRo1vzpT386d+7c4s3zzjuvjIsBAAAAACpKTaaPftddd/X39w/zzgMDA93d3f/zP//z7W9/e/A1glpbW08++eRsFggAAAAAxJNt1rz44ovz+fwBPshXv/rVurq6UVkPAAAAADAOVOhJ6EX/9E//dNZZZ5V7FQAAAABABanQrFlbW/tXf/VXL7/88kc+8pFyrwUAAAAAqCzZnoR+7733DgwMDP/+1dX/y969x0hV3o8fP7uzszcui6KAIKhorZdqxbvSaqmg0JjWpvaijTHWxGooabShXpvaJkLUprH1TrXaNi1Nq7bWKoUYUfFSxEqwNkJUwCAKNMp1r7Mz8/vj5DffDSru7M7s9rO8Xn89u8wz58kwZ2fmPXPmZFpaWiZMmDB27Ni6uuquDQAAAAAIqrrp8Jxzzqnq9QMAAAAAe6H/0YPQAQAAAAA+jqwJAAAAAAQjawIAAAAAwciaAAAAAEAwsiYAAAAAEIysCQAAAAAEU1fVaz/nnHNyuVxVN1Hy1FNPDcyGAAAAAIDBVd2suXTp0gHLmgAAAADAXsJB6AAAAABAMNX9tOayZcvWrFmzatWq5cuXP//88+VOHzFixM6dO6uxMAAAAAAgrupmzVNOOeWUU05JkuSXv/xlKWt+5Stf+eY3v3n88cfvt99+w4YNy2QySZLkcrlt27atW7du8eLFt912W1ozL7300ltvvbVYLObz+WKxWNWlAgAAAABRVDdrpm688caf/OQnSZJceOGFt99++7777vvhy2Sz2ebm5vHjx0+dOvVHP/rRHXfccdVVV912221tbW333HNPNpsdgHUCAAAAACFU/bs1Fy5cmDbNSy655Pe///1HNs3dZLPZK6+88he/+EWSJAsWLLjzzjurvUgAAAAAIJDqZs3W1taLL744SZJsNnv33XeXNfd73/vemDFjkiSZM2fOtm3bqrI+AAAAACCg6mbNhx9+OJfLJUkye/bshoaGsubW1tZeeeWV6fihhx6q/OIAAAAAgJiqmzUfeeSRdHDGGWf0YfqJJ56YDv72t79VbE0AAAAAQHDVzZorV65MBxMnTuzD9HHjxqWDV155pWJrAgAAAACCq27W3LJlSzooFot9mJ7P59PBxo0bK7YmAAAAACC46mbNUaNGpYM1a9b0Yfrq1avTwYgRIyq2JgAAAAAguOpmzc9//vPp4P777+/D9N/+9rfp4PTTT6/YmgAAAACA4KqbNadPn54Onn766aeffrqsuStXrnziiSfS8VlnnVXZhQEAAAAAcVU3a37jG98ojadPn75s2bJeTly9evXnPve50o8XXnhhhVcGAAAAAIRV9e/WvPLKK9NxPp8/44wzzjvvvBUrVpTOBbSbYrG4du3aOXPmHHnkkW1tbekvv/71r0+YMKGq6wQAAAAAAqmr9gZuvvnmRYsWlU7+8+ijjz766KO1tbVnnnnmcccdd/DBBzc3N3d1db377rtr1qxZtGhRa2trz+n77bffAw88UO1FAgAAAACBVD1rZrPZF1544YQTTli3bl3pl4VCYenSpUuXLt3z3FGjRr388svDhg2r8hoBAAAAgEiqexB6ap999nn99dfnzp1b1qwLLrhg/fr1Bx10UJVWBQAAAAAENRBZM0mShoaGW265ZcuWLbfccsthhx22h0uOGzfuuuuue+utt/7whz+0tLQMzPIAAAAAgECqfhB6T/vvv//cuXPnzp27ffv2zZs3b9iwYcuWLV1dXdlsdvTo0RMnThw7duzo0aMHckkAAAAAQDgDmjVLWlpaWlpaDj/88EHZOgAAAAAQ2gAdhA4AAAAAUCmyJgAAAAAQjKwJAAAAAAQzON+tmcrn8+kgk8kM4jIAAAAAgFgG9NOaXV1dTz755OzZsw8//PBMJlP3/w3kGgAAAACA6AYoaxYKhQULFrS0tMyYMeOuu+564403CoXCnqdMnz69vr6+vr7+mmuuGZhFAgAAAAAhDETW7Ojo+MIXvvDd7363o6Oj97N+8IMf5HK5XC53++23f2IDBQAAAAD2HlXPmvl8/otf/OKyZcvKnTht2rR00NbW9tprr1V6XQAAAABAVFXPmrfeeuuLL75Y+vGKK6546aWXtm7dunz58j1PbGxsnDlzZjp+8sknq7hEAAAAACCU6p6up62t7frrr0/HkyZNeu655yZOnJj+OHLkyE+cPmvWrH/84x9Jkvzzn/+s3iIBAAAAgFiq+2nNxx9/vPS1mD2bZi8deuih6eDNN9+s8MoAAAAAgLCqmzUfe+yxdHDRRReV2zSTJBk3blw6WLduXSWXBQAAAABEVt2suWLFinTw1a9+tQ/Tm5qa0sGOHTsqtiYAAAAAILjqZs3169eng0mTJvVhemdnZzrIZDKVWhIAAAAAEF11s2Y2m00HpW/YLEvpKzUnT55csTUBAAAAAMFVN2seeeSR6eCNN97ow/RFixalg89+9rMVWxMAAAAAEFx1s+aZZ56ZDn7zm9+UO3fnzp0PPPBAOj777LMruSwAAAAAILLqZs3SmYKWLFny2muvlTX3sssuK41nzpxZyWUBAAAAAJFVN2uecsopBxxwQDqeMWPGpk2bejOrUChcc801f/zjH9MfTz/99AkTJlRriQAAAABANNXNmrW1tb/73e/S8aZNmyZNmnTvvfe2tbV93OVzudzSpUs//elP33zzzaVf3n///VVdJAAAAAAQS121N3DWWWddffXVaabM5XKXX3755Zdfftppp40bN650mTvuuGPDhg0rVqx45plndjtn+m233XbEEUdUe5EAAAAAQCBVz5pJksyfPz+TycybN6/0mxdffLHnBebMmfORE2+88cbvf//71V0cAAAAABBNdQ9CT9XU1Nx0003PPPPMmDFjejll1KhRTz311I9//OOqLgwAAAAAiGggsmbqjDPO2Lhx42OPPbbn05pPmTJl4cKFmzdvnjZt2oCtDQAAAAAIZCAOQv+/jdXVnXvuueeee24ul9uwYcOGDRs2b97c2tpaX18/ZsyYAw44YPLkyc3NzQO5JAAAAAAgnAHNmiXZbHby5MmTJ08elK0DAAAAAKEN3EHoAAAAAAAVUd1Pa55zzjlHHXXUkUceedZZZx166KFV3RYAAAAAsJeobtZcunTpkiVLkiT505/+JGsCAAAAABUxQAehT5o0aWA2BAAAAAAMedXNmsOGDUsHdXWDc24iAAAAAGDoqW7WPOGEE9LBunXrqrohAAAAAGDvUd2secEFF6SDBx98sKobAgAAAAD2HlXPmo2NjUmSPP7442+99VZVtwUAAAAA7CWqmzWbm5v/8pe/pOOzzz67ra2tqpsDAAAAAPYGVT8T+syZM++7774kSdauXXv88cdv3Lix2lsEAAAAAIa2qmfNJEkuvfTSxx57rLa2ds2aNQceeOD111//9ttvF4vFAdg0AAAAADD01FX12ru6unbu3Ll169bRo0d/5zvfST+2OW/evHnz5jU3N0+ZMmX8+PGZTKY3V7Vw4cKqLhUAAAAAiKK6WXP48OG5XO4j/6mtre3555/v/VXJmgAAAABAaiAOQgcAAAAAqCBZEwAAAAAIproHoW/atKmq1w8AAAAA7IWqmzX33Xffql4/AAAAALAXchA6AAAAABCMrAkAAAAABCNrAgAAAADBVOa7Nd98881isZgkyaRJkxoaGipynQAAAAAAH6kyWfOoo47K5XJJkqxaterYY4/d84V37dr13HPPpeOZM2dWZAEAAAAAwN6jumdC/0jvvPPOrFmz0nH6GU8AAAAAgN7z3ZoAAAAAQDCyJgAAAAAQjKwJAAAAAAQjawIAAAAAwciaAAAAAEAwsiYAAAAAEIysCQAAAAAEI2sCAAAAAMHImgAAAABAMLImAAAAABCMrAkAAAAABFNX2atbvHjx9u3b93yZV155pTR++umnM5lMb67585//fL9WBgAAAAAMFRXOmj/84Q/Luvy0adN6eclisVj+cgAAAACAIchB6AAAAABAMLImAAAAABBMZQ5Cv+666/L5fEWuCgAAAABgzyqTNW+88caKXA8AAAAAwCdyEDoAAAAAEIysCQAAAAAEI2sCAAAAAMHImgAAAABAMLImAAAAABCMrAkAAAAABCNrAgAAAADByJoAAAAAQDB1g70AAAAAgKFp06ZNc+bMGexV/J/XX399sJcAFSNrAgAAAFRFa2vrQw89NNirgKHJQegAAAAAQDCyJgAAAAAQjIPQAQAAAAZC8+jx2aYRg7iA1v9u6O5sG8QFQAXJmgAAAAAD4fBzvjPmiFMHcQEvP3j9B2tXDeICoIIchA4AAAAABCNrAgAAAADByJoAAAAAQDCyJgAAAAAQjKwJAAAAAAQjawIAAAAAwciaAAAAAEAwsiYAAAAAEIysCQAAAAAEI2sCAAAAAMHImgAAAABAMLImAAAAABCMrAkAAAAABCNrAgAAAADByJoAAAAAQDCyJgAAAAAQjKwJAAAAAAQjawIAAAAAwciaAAAAAEAwsiYAAAAAEIysCQAAAAAEI2sCAAAAAMHImgAAAABAMLImAAAAABCMrAkAAAAABCNrAgAAAADByJoAAAAAQDCyJgAAAAAQjKwJAAAAAAQjawIAAAAAwciaAAAAAEAwsiYAAAAAEIysCQAAAAAEI2sCAAAAAMHImgAAAABAMLImAAAAABCMrAkAAAAABCNrAgAAAADByJoAAAAAQDCyJgAAAAAQjKwJAAAAAAQjawIAAAAAwciaAAAAAEAwsiYAAAAAEIysCQAAAAAEI2sCAAAAAMHImgAAAABAMLImAAAAABCMrAkAAAAABCNrAgAAAADByJoAAAAAQDCyJgAAAAAQjKwJAAAAAAQjawIAAAAAwciaAAAAAEAwsiYAAAAAEIysCQAAAAAEI2sCAAAAAMHImgAAAABAMLImAAAAABCMrAkAAAAABCNrAgAAAADByJoAAAAAQDCyJgAAAAAQjKwJAAAAAAQjawIAAAAAwciaAAAAAEAwsiYAAAAAEIysCQAAAAAEI2sCAAAAAMHImgAAAABAMLImAAAAABCMrAkAAAAABCNrAgAAAADByJoAAAAAQDCyJgAAAAAQjKwJAAAAAAQjawIAAAAAwciaAAAAAEAwsiYAAAAAEIysCQAAAAAEI2sCAAAAAMHImgAAAABAMLImAAAAABCMrAkAAAAABCNrAgAAAADByJoAAAAAQDCyJgAAAAAQjKwJAAAAAARTN9gLiGfXrl0XXXTRJ15s+vTps2fP3sMFWltbn3322RdeeGHt2rVdXV0HHHDASSedNHXq1MmTJ/dmGf2cDgAAAABxyZpla2try+fzn3ixPV9m8eLFd911V7FYLP1m/fr169ev//Of/zxlypRrr722sbGxetMBAAAAIDRZs2y7du1KB0ccccTRRx/9cRc77LDDPu6f/v73vy9YsCAdNzc3n3rqqSNGjFizZs3q1auTJFm5cuXcuXN//vOfZ7PZakwHAAAAgOhkzbLt2LEjHZx//vknn3xyudM3btxYipJXXHHFzJkza2pq0h8/+OCDn/70p2vXrn377bcXLFjwkcew93M6AAAAAAwBThlUtm3btqWDlpaWPky/55570sEll1wya9asUpRMkmTfffedP3/+8OHDkyRZvHjxf//734pPBwAAAIAhQNYs29atW9NBGhDLnbtq1aokSRobG7/85S9/+AJNTU2XXXZZOl6yZEllpwMAAADA0CBrlu39999PB8OGDSt3bholkySZMWNGJpP5yMuUDmz/61//2vOkQP2fDgAAAABDg6xZttLB3U1NTeXOLXXJPXwpZ3Nz88SJE5Mk6ezsLCXUikwHAAAAgKFB1ixbKWvW19eXO/fVV19NBxMmTNjDxY455ph0sG7dugpOBwAAAIChwZnQy7Zp06YkSerq6t55551NmzZt2bKlra2tpqZm//33nzBhwiGHHPJxh4cXi8VSEh05cuQeNnHIIYekg40bN5500kkVmQ4AAAAAQ4asWZ5isbhr164kSbq7u2fPnv3hC9TW1p533nnf+ta3Ghsbd/unrq6u0jibze5hK6VzrPc8m3k/pwMAAADAkCFrlqdYLI4fP/7dd9/9uAsUCoVHHnlk0aJFP/vZz9LvuCwpdcn6+vqampo9bKV0MqItW7ZUanqfdXV1pSW3snqezqi7u/uDDz6o+CaGvK1btw72EiLpeZdrb2/v6OgYxMXEkt50uVzOftp7u52xbceOHYO1kogKhUKSJG1tbe3t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AAAIRtYEAAAAAIKRNQEAAACAYGRNAAAAACAYWRMAAAAACEbWBAAAAACCkTUBAAAAgGBkTQAAAAAgGFkTAAAAAAhG1gQAAAAAgpE1AQAAAIBgZE0AAAAAIBhZEwAAAAAIRtYEAAAAAIKRNQEAAACAYGRNAAAAACAYWRMAAAAACEbWBAAAAACCkTUBAAAAgGBkTQAAAAAgGFkTAAAAAAhG1gQAAAAAgpE1AQAAAIBgZE0AAAAAIBhZEwAAAAAIRtYEAAAAAIKRNQEAAACAYGRNAAAAACAYWRMAAAAACEbWBAAAAACCkTUBAAAAgGBkTQAAAAAgGFkTAAAAAAhG1gQAAAAAgpE1AQAAAIBgZE0AAAAAIBhZEwAAAAAIRtYEAAAAAIKRNQEAAACAYGRNAAAAACAYWRMAAAAACEbWBAAAAACCkTUBAAAAgGBkTQAAAAAgGFkTAAAAAAhG1gQAAAAAgpE1AQAAAIBgZE0AAAAAIBhZEwAAAAAIRtYEAAAAAIKRNQEAAACAYGRNAAAAACAYWRMAAAAACEbWBAAAAACCkTUBAAAAgGBkTQAAAAAgGFkTAAAAAAhG1gQAAAAAgpE1AQAAAIBgZE0AAAAAIBhZEwAAAAAIRtYEAAAAAIKRNQEAAACAYGRNAAAAACAYWRMAAAAACEbWBAAAAACCkTUBAAAAgGBkTQAAAAAgGFkTAAAAAAhG1gQAAAAAgpE1AQAAAIBgZE0AAAAAIBhZEwAAAAAIRtYEAAAAAIKRNQEAAACAYGRNAAAAACAYWRMAAAAACEbWBAAAAACCkTUBAAAAgGBkTQAAAAAgGFkTAAAAAAhG1gQAAAAAgpE1AQAAAIBgZE0AAAAAIBhZEwAAAAAIRtYEAAAAAIKRNQEAAACAYGRNAAAAACAYWRMAAAAACEbWBAAAAACCkTUBAAAAgGBkTQAAAAAgGFkTAAAAAAhG1gQAAAAAgpE1AQAAAIBgZE0AAAAAIBhZEwAAAAAIRtYEAAAAAIKRNQEAAACAYGRNAAAAACAYWRMAAAAACEbWBAAAAACCkTUBAAAAgGBkTQAAAAAgGFkTAAAAAAhG1gQAAAAAgpE1AQAAAIBgZE0AAAAAIBhZEwAAAAAIRtYEAAAAAIKRNQEAAACAYGRNAAAAACAYWRMAAAAACEbWBAAAAACCkTUBAAAAgGBkTQAAAAAgGFkTAAAA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fm+65pprfvazn6W5HmqJwsLCOXPmfPTRR4sXL87Pz69Xr95FF1105ZVXhl0XGeUXv/jFunXryp/z97//PTs7Oz31UEvE4/HZs2fPnDnzyy+/LC4u7tChQ//+/c8999xGjRqFXRoZKB6Pz5o1a+bMmV988UV2dnafPn0GDBjQrVu3sOtKK7EmUZJIJN57770//vGPpaWlQRC0bNly9+7dn3766aefftqxY8eHH364Xr16YddI5lizZs2DDz64atWqIAiysrJatWq1a9euL7/88ssvv5w0adK4cePat28fdo1kuIKCgrFjx8bj8bALIWPt2LEjHo83bNiwWbNme93UsGHDUEoi43322WdjxowpLi4OgiAvL69Fixb5+flr164Nuy4yTcuWLWOx2H5vKigo2Lx5cywWs1cEVWv37t133HHH6tWrgyBo3Lhx48aNly1btmzZskmTJj344IPHH3982AWSUQoKCm655ZbkC2izZs3i8fjbb7/99ttvn3baabfffvuBngAzj1iTKFm1atW4ceOaNWt22223devWLfnl6oYNG8aMGbNq1aoJEybcfPPNYddI5ojFYmvWrLnqqqvOPffc5s2bJ18Y8vPzn3zyyRkzZowcOfIvf/lL7Xm1IBSPPPLInj17WrduvX79+rBrITNt3749CIKbbrqpX79+YddCrTBv3rwxY8ZkZWWNGDHi1FNPTR364Psbqtzo0aMPdNP06dPHjx9/6aWXeiNH1XrkkUdWr159yimnjBgxomnTpkEQFBUVTZky5fnnnx81atTzzz+fk5MTdo1kiEQiMXLkyLVr15555pk33nhj8vV08+bNDz300AcffNCmTZshQ4aEXWOa+HqKKDn66KPvueeep556qkePHqkDRlq1ajVq1KggCN55553kN/9QJdq2bTt58uSrrrrqiCOOSL3rbdSo0U033RSLxbZt27Zp06ZwKySzzZ49+8MPP7zuuuv23Y0OqsqWLVuCIEh+9ILqlp+fP3bs2Hr16k2cOPGcc84pezoXBwKTNqWlpc8++2wQBBdffHHYtZBRiouL582bFwTB7bffnnphrVev3lVXXXXUUUcVFxcvX7481ALJKF9//fWyZcvat29/6623pl5PW7RoMWbMmGbNmk2ePHnbtm3hVpg2Yk0i5uSTT973O65WrVolU6fkXidQVfb7KSsnJyf5ypE8GQJUhx07djz88MPt27cfNGjQd999F3Y5ZKzNmzcHQeC0raTH1KlTE4nE8OHDW7ZsGXYt1F6ffPLJd99917t3b98aUrWSe9jUrVs3Ly9vr5uSh5/v2rUrhLLIUIsWLQqC4OKLL95rr/O6desOHTo0CIIPPvggnMrSTqxJJkgkEolEIggCe/WTBmvWrNm1a1e9evWOPPLIsGshMyUSieQpNe+9997s7OyioqKwKyJjJfc6dxpN0iCRSEydOjUIgv79+4ddC7VXIpF45plngiC4+uqrw66FTNOgQYPc3Nzi4uL8/Py9blq4cGEQBEcddVQYdZGZvvnmmyAIWrduve9NXbt2DYJgwYIF6a4pJM6tSSZI7l+dnZ3tMDqqVTwe/+KLLx588MEgCEaPHu2IOarJtGnTFi9ePGLEiGR0nvzaBqrDhg0bgiB46aWXNm3atGnTppycnGOOOaZPnz7dunVzyjmq1qZNmwoKCrp165aTk7Nhw4Z33333X//6V1ZWVteuXQcOHNiiRYuwC6RWWLZs2Zo1azp06HDMMceEXQuZJhaLDRky5Mknn3zooYd++9vf1q1bNwiCRCLxyiuvrF+//pxzzvFERxVKXi153ww9ZenSpWksJ0xiTTLB66+/HgSB035THQoLC0eNGlVaWrpz586NGzc2atToggsuuPDCCx2zSTVZv379xIkTe/bsOWDAgLBrIfMlj5ibMmVK6ieLFi165ZVXOnbsOHbsWE90VKF169YFQfCDH/zgn//85wMPPJD6+YIFC55//vlf/vKX5557bnjVUVv85S9/CYLg2muvDbkOMtRPfvKTTZs2vfzyy0OHDh02bFinTp3+9Kc/ffnll+edd96NN94YdnVklC5dukybNu3dd9897bTT9rrp5ZdfDoJgx44dYdQVArEmkfftt9++8MIL9evXv+KKK8KuhQyUSCS++uqr1OLu3bsXL1587LHH9unTR4xOlYvH46NHj87Ly7vjjjs0GGkwfvz4r7/+ukOHDg0bNozFYkVFRUuXLh0/fvyqVatuv/32xx9/3G7pVJWtW7cGQfDpp5++/PLLt956a58+fXJzc4uKit59990JEyY89thjXbp0Ofroo8Muk0y2fv36RYsWNWjQoGfPnmHXQmaKxWLXX399hw4dHn300T/84Q/JH44YMeKcc84JtzAyT58+fbKysj7++ONp06YNGjQo+YatoKBg0qRJ7733XhAEWVm15ZyTteVxkqny8/PvvPPOIAjuvvvu3NzcsMshA+Xl5U2dOnXq1Kkvv/zypEmTfvOb32zcuPH+++8fPXq0Q4Opcv/zP/+zdu3aUaNGlb1AMFSf3Nzcbt26NW7cOCsrKxaL5ebmdu/efdy4cQ0bNly3bt2HH34YdoFkjuRuIytXrhw3btxZZ52Vl5eXbLkLLrhgyJAhQRA8//zzYddIhnvhhReCIBg8eLAvbKg+H3/88dNPPx0EwXnnnXfccccFQfDoo4++9tprPjhQterXrz9q1KggCJ544omf/exnv/zlL//jP/7jyiuv/OSTT37zm98EQVB7rs4n1iTCCgoKbrvttp07d44YMSJ5WlyoPllZWU2aNOnVq9djjz3WqlWr+fPnz507N+yiyCjLli178cUXf/zjH3fv3j3sWqjVcnNzr7zyyiAIPMtRheLxeBAE/fr123eXzOQ5Nz788EMf+6k++fn5b7/9dhAE9puj+kyePPm+++7r1KnTs88+O3z48EceeeTRRx899thjJ06c+Lvf/a60tDTsAskop5xyylNPPXX++ec3atRo9erVubm5Q4cOffTRR5P7e7Vt2zbsAtPEQehUjU8//fT++++Px+P9+vW74447Kvhbu3btmjlz5pw5c5YvX15cXNymTZtevXr179+/IufwLiwsvPXWW9evX3/ttdd6d1LbpL/fysrJybnyyiv/+Mc/zpgxo1+/fodePtGThpYrLi6+9957W7Rocd111+31wT65GI/HkwMHp9cG4T7LBUGQ3MHk22+/PdRfJIrS028NGjQIguD444/f96YmTZoEQVBaWlpSUpK8yAaZLZSnuNdeey0IggsvvNABXrVQelpuxYoVkyZNat++/ZgxY1J7BHfs2PH3v//9ww8/PGvWrFdeeeXSSy+tmodEzXYYLXd4T3EtW7a88cYb9zpz68qVK4Mg6NKlSyUeQZSINamsRCLxwgsvPPfcc8nF5FfxFTF9+vTHH3+87Kf3lStXrly5cvLkySeddNJdd91VznuOwsLC2267bc2aNUOGDPnpT39amfqJllD6bV/J61Nv2rSp4r9CRKWt5RYsWJA8QvOyyy7b7wqHDh0aBEHv3r2Tx5uQqWrIs1xyPckcigyWzn5r165dEARr164tZ7UODc54YT3FFRcXJ49AFyrVNulsuffffz8Igquuumqvp7JYLHbDDTfMmjVrypQpOjDjHV7LVe27uHfeeScIgh/+8IeHUniEOQidSikpKXnwwQdTG23Fvfbaa+PHj09ut/Xr1//Rj3508cUXp77Anz9//u23315SUrLf3y0uLr7jjju++eabf//3f7/88ssrUz/REkq/7VdyD6b27dsfaiVES81pOWqJmtNyy5YtC4LgBz/4waFWQoSkud86dOgQBMGcOXP2PdJ8+/btQRA0btxYrJnZQnyKmzFjRjweP+mkk1q0aHF4xRNFaW65jRs3BkHQvHnzfVeYl5cXBMGOHTucaiOzHV7LVe27uPXr1y9evDg3N9femnBwO3bsuPPOO9esWRMEwZFHHlnxPdfWrFkzceLE5PjGG28cNGhQ6pjKrVu33nfffcuXL1+1atXEiROHDx++1+8mM82VK1dee+219tOsVULpt/2Kx+NTpkwJgqBv376H/DCIjjS3XK9evaZOnbrfFV5//fWbN2/+61//2rRp08N/PNR4NedZrqioaPLkyUEQnH766Yf8MIiI9Pdb06ZNu3Tp8tVXX82aNeuMM84oe1PyjIfnnntuJR8UNVmIT3GlpaXPPvtsEATXXHNNZR8G0ZH+luvYseMHH3wwc+bMbt267bXOJUuWJCc4lVAGO7yWq9p3cUVFRWPHjg2CYOjQoa6EDgexbNmyG264IbnRnnbaaffdd1/Ff3fChAnJwXXXXXf++eeXfXJv3rz5Aw880LBhwyAIpk+fvtdzQUlJyZ133rl8+fLrr79eplmrhNJvDzzwwLvvvps8Ljhl48aNo0eP3rRpU4sWLfr06XPYj4gaLpSWO5DkGmrPW5PaKZSW+/zzz5977rmNGzemdh5JJBKrVq36r//6r/z8/P79+3fs2LGSj4uaKaynuFtuuSUIgt///veffvppsusSicSMGTOee+65WCzm2MwMFu6r6qeffpqfn9+mTZvkWYOpDUJpubPPPjsIgjfeeGP69Ol79uxJ/jCRSHzxxRfJpGnw4MGVelTUYIfdcpV5iit7Eap4PL548eLhw4evWrXqxBNPvOCCCyrzcKLF3pocjo8//ji1oQ4ePPiKK67YsGFDBX9327ZtCxYsCIIgNzf3oosu2ndCXl7esGHDHnnkkSAI3nzzzbLP/o8//njysLiZM2d+8MEH+13/ww8/fCgPhQgIq982bNgwbty4IAiysrLatWuXnZ29du3a4uLiIAjatWv30EMPOVYuU4XVctRaYbVcaWnp3/72t7/97W9BELRp06ZevXrffvtt8pNY7969b7vttso9LGqoEJ/i2rVrN2rUqDFjxowePTo3N7d169bJlsvKyvrd737XqFGjyjwuaqxwX1UTicQzzzwTBMHQoUPtKFdLhNVyLVu2vPXWWx955JHx48ePHz++TZs2devW/fbbb5NnV7zkkksc6ZWpDrvlKvkU99lnnz344INt27YtKChYt25d8odnnHHGLbfcUque7sSaHI4uXbrk5uYWFxfffffdPXv2DA7l7MvJ7TYIgoEDBx4oFerdu3dy8PLLL1999dWpbTI/Pz85SIab1BJh9du99947e/bsefPmrVq1at26dYlEonXr1j169OjVq1fPnj3tOpfBwmo5aq2wWq5r166jR4+eOXPmkiVLtmzZUlxc3K5dux49egwYMMA+TRks3Ke43r17//nPf/7HP/4xa9as1atXt27dun///hdddFHyYuhkpHBb7uuvv/72229zc3MdZFN7hNhyZ5111oknnvjWW2/Nmzdv9erVRUVF7dq1O/nkk88999zk+YXJSIfdcpXst0aNGuXl5a1YsaJevXpdunTp0aPHmWeeWQsPtRFrcjgaN278wAMPNGjQoHXr1smfVPzkx6lNN7V97qt+/fodOnT45ptvioqKtmzZkjq3t+v/1k5h9VuTJk0uuOCCWrUDP0lhtdyBPP300xW8dyIqrJbLzs7u2bNn8v03tUfoT3FHHHHE4MGD7atee4Tbcscdd9yBTl1Npgq35Zo1a3bFFVdcccUVh1U7kXTYLVfJfuvcuXPyxMG1nL2NOEzHHntsaqM9JAsXLkwO2rVrV8607t27JwcrVqw4jHshw+g30kzLkWZajnTSb6SZliPNtBxpdngtp9+qhFiTtEokEqkz3TZu3LicmZ06dUoOkqfdhcOg30gzLUeaaTnSSb+RZlqONNNypJN+qypiTdIqebmVpJycnHJmpk6xVMErBcO+9BtppuVIMy1HOuk30kzLkWZajnTSb1VFrElapTbdunXrln+VjAYNGiQHGzdurPayyFD6jTTTcqSZliOd9BtppuVIMy1HOum3qiLWJK1SVwTLzc0tf2a9evWSg7JfYsAh0W+kmZYjzbQc6aTfSDMtR5ppOdJJv1UVsSZpVfGL0KWU/8UFlEO/kWZajjTTcqSTfiPNtBxppuVIJ/1WVcSapFWdOnWSg8LCwvJnpr6ISH01AYdKv5FmWo4003Kkk34jzbQcaablSCf9VlXEmqRVav/q4uLi8r+d2LVrV3LQtGnTai+LDKXfSDMtR5ppOdJJv5FmWo4003Kkk36rKmJN0ir1jUQQBCUlJeXM3L59e3LQunXr6q2JzKXfSDMtR5ppOdJJv5FmWo4003Kkk36rKmJN0ioWi3Xs2DE53rlzZzkzV65cmRy0bNmyuqsiU+k30kzLkWZajnTSb6SZliPNtBzppN+qiliTdDvllFOSg7Vr15Yz7V//+ldycPTRR1d3SWQw/UaaaTnSTMuRTvqNNNNypJmWI530W5UQa5JuPXr0SA4++uijA80pKChYtWpVcmxHaypDv5FmWo4003Kkk34jzbQcaablSCf9ViXEmqTbCSecEIvFgiB488034/H4fud88sknyUG/fv2ys7PTVxwZR7+RZlqONNNypJN+I820HGmm5Ugn/VYlxJqkW05OzqBBg4IgKCgoeP311/edUFhY+MQTTyTHl112WVqLI+PoN9JMy5FmWo500m+kmZYjzbQc6aTfqoRYkxBcffXVyS8lnnzyyXfffTeRSKRu2rFjx6hRo3bs2BEEQffu3Tt37hxalWQK/UaaaTnSTMuRTvqNNNNypJmWI530W+XVOfgUqGpNmjS566677r///iAIxo0b98wzz/Tv379Ro0ZLlixZsGBBck6DBg3uvPPOUMskQ+g30kzLkWZajnTSb6SZliPNtBzppN8qz96ahKNv376jRo1Knhti586db7zxxgsvvJDabtu2bfvYY481atQo1BrJHPqNNNNypJmWI530G2mm5UgzLUc66bdKsrcmoendu/fzzz8/a9asjz/+eOHChbt3727VqlXXrl3PPvvsHj16JPfEhqqi30gzLUeaaTnSSb+RZlqONNNypJN+q4xY2UP3AQAAAABqPgehAwAAAAARI9YEAAAAACJGrAkAAAAARIxYEwAAAACIGLEmAAAAABAxYk0AAAAAIGLEmgAAAABAxIg1AQAAAICIEWsCAAAAABEj1gQAAAAAIkasCQAAAABEjFgTAAAAAIgYsSYAAAAAEDFiTQAAAAAgYsSaAAAAAEDEiDUBAAAAgIgRawIAAAAAESPWBAAAAAAiRqwJAAAAAERMnbALAACAQzN27Nh77733QLfGYrHGjRt37ty5c+fOp59+et++fbt27ZqV5et8AICMItYEACBi4vF4SUlJORM2b968efPmf/7zn3/961+DIGjUqNHNN988YsSII488Ml01AgBQvXxrDQBAhsvPzx8zZkzLli3vvffeeDwedjkAAFQBe2sCABBhDzzwwAUXXJBaTCQSxcXFW7Zs+fzzz+fNm/fiiy+WzTFHjx794osvzpgxo3nz5mEUCwBAlRFrAgAQYX379u3Ro8e+Px80aFAQBCUlJbNnz7711lvnz5+f/PmiRYtOOOGERYsWHXHEEWktFACAKuUgdAAAMlZOTs5ZZ531ySefPPfcc6kfrlu37rTTTiv/7JwAANRwYk0AADJcLBa7+uqrFyxYkLoe+uLFi3/961+HWxUAAJUh1gQAoFbo0aPHlClTUot/+MMfVq1aFWI9AABUhlgTAIDa4uKLLx4wYEBqcezYsRX/3aVLlz7yyCOXX355hw4d8vLymjdvftppp40cOXLu3LmlpaWHVMaOHTtefPHFG264oVevXs2aNatXr96RRx7Zv3//YcOGTZo0qeJha2lp6dy5c3/961/37du3SZMmeXl5xx9//JAhQ1544YVdu3YdUkkAAJETSyQSYdcAAACH4L777rvnnnuS4/fee++ss86q+O/Onz+/Z8+eyXF2dvauXbvq1atX/q989tlngwcP/uKLLw40oUWLFk899dRFF10Ui8XKX1V+fv5tt9325JNPlj+tU6dO99xzz9ChQ8uZM2PGjGuuuWbNmjUHmjB27Nhf//rX2dnZ5d8XAEBE2VsTAIBa5Ic//GGjRo2S43g8/uGHH5YzOZFI/Pa3vz3ppJPKyTSDINi8efMll1wyePDg8i9DtHHjxk6dOh000wyCYMWKFQsWLCinqlGjRp199tnlZJpBEIwcObJ///4FBQUHvTsAgCiqE3YBAACQPrFYbOjQoY899lhy8YMPPjjjjDMONHn48OF/+tOfUotHHXXUL3/5y5NPPrlZs2a7du1auHDhn//8548//jh56/PPP79t27Zp06alLkxUVmlp6RlnnLFly5bkYqNGjYYPH96/f//WrVtnZWVt3rx5yZIl06ZNmz59enLCzTfffKCq7rnnnrKHzw8YMOC6667r3Llzdnb2N99889JL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s9+V//a3vx0zZkwQBA0aNLj88stPPfXUzp07t2jRIhaLbdu2bfHixX/+85/nzJmTmv/EE08MGzZsv1WNHTt2rx1Cr7322vPPP79z58716tUrKChYv379119/PX369Ndffz31l6nI4wUAiBCxJgAAEVM21qy4I444YtKkSeeff/4h/dbjjz8+fPjwisy88MILJ0+eXK9evf3emoo1K+KGG2544oknytmfdK+89aC85wcAMo+D0AEAyHA9evSYPHny+vXrDzXTDILgF7/4xYIFC3r06FHOnBYtWkyePHnq1KkHyjSDIDjvvPPatGlz0Ltr167dlClTJk6cWP4x8jfddNOSJUtOP/30g64wNze37IWGAAAyhr01AQCImPL31mzQoEH79u2PO+64nj17nnrqqSeffPKRRx5Z+TtdsmTJq6+++o9//GPBggVbt25t2LBhr169TjvttEGDBvXu3Tsr6+C7CyQSiSVLlrz55puzZ89eunTpihUrdu7cmZ2d3b59+65du5555pnnnHPOiSeeWJFVpaxbt+6NN96YPn36ggULli9fHo/HGzdu3KlTp2OPPbZfv34DBgw44YQTsrOzK/G4AQBqKLEmAAAAABAxDkIHAAAAACJGrAkAAAAARIxYEwAAAACIGLEmAAAAABAxYk0AAAAAIGLEmgAAAABAxIg1AQAAAICIEWsCAAAAABEj1gQAAAAAIkasCQAAAABEjFgTAAAAAIgYsSYAAAAAEDFiTQAAAAAgYsSaAAAAAEDEiDUBAAAAgIgRawIAAAAAESPWBAAAAAAiRqwJAAAAAESMWBMAAAAAiBixJgAAAAAQMWJNAAAAACBixJoAAAAAQMSINQEAAACAiBFrAgAAAAARI9YEAAAAACJGrAkAAAAARIxYEwAAAACIGLEmAAAAABAxYk0AAAAAIGLEmgAAAABAxIg1AQAAAICIEWsCAAAAABEj1gQAAAAAIub/AsZjci69aYStAAAAAElFTkSuQmCC" alt="Fig. 2: Histogram of Radionuclide Total Dose (DICOM tag 0018,1074) values for FDG-PET series." width="50%" />
 <p class="caption">
@@ -1299,7 +1300,7 @@ values for FDG-PET series.
 decay-corrected to the scan start time (Decay Correction = “START”),
 while there were no series decay-corrected to the administration time
 (Decay Correction = “ADMIN”). The remaining series were not decay
-corrected (Decay Correction = “NONE”, N=97, 2.8%). More than a half of
+corrected (Decay Correction = “NONE”, N=97, 2.8%). More than half of
 series (N=2040, 59.4%) contained more than one Acquisition Time
 (0008,0032) values.</p>
 <p>Out of 3337 series with Decay Correction = “START”, in 189 cases
@@ -1310,11 +1311,11 @@ Radiopharmaceutical Administration Time.</p>
 series) and 111,797 slices. The Acquisition Time was identical to the
 Series Time in 44,022 slices (39.4%) and in all of these slices
 (100.0%), this time was also equal to the time component of the private
-scan datetime. Out of the remaining 67,775 slices, the GE formula lead
-to time equal to the private scan time in 62,945 cases (92.9%). The
+scan datetime. Out of the remaining 67,775 slices, the GE formula led to
+time equal to the private scan time in 62,945 cases (92.9%). The
 remaining 4,830 slices (4.3%) from 84 series, where neither the
 Acquisition Time was equal to Series Time and the private scan time nor
-the GE formula lead to the private scan time, represent the fraction of
+the GE formula led to the private scan time, represent the fraction of
 slices where the proposed strategy would fail if the private scan
 datetime was removed. The median offset from the private scan time was
 422 s (IQR: 243-423 s). However, the majority (69.7%) belonged to the
@@ -1325,26 +1326,26 @@ attributes present with a median offset of 7150 s (IQR: 2581-10747
 s).</p>
 <p>The Siemens private scan datetime was present in 168 series (25.0% of
 Siemens series) and 54,090 slices. The time was always (100.0%)
-identical to SeriesTime. Acquisition Time was equal to Series Time in
-3,054 of these slices (5.6%). In all of these slices (100.0%), this time
-was also equal to the time component of the private scan datetime. Out
-of the remaining 51,036 slices, the Siemens formula lead to time equal
-to the private scan datetime in all cases (100.0%).</p>
+identical to the Series Time. Acquisition Time was equal to the Series
+Time in 3,054 of these slices (5.6%). In all these slices (100.0%), this
+time was also equal to the time component of the private scan datetime.
+Out of the remaining 51,036 slices, the Siemens formula led to time
+equal to the private scan datetime in all cases (100.0%).</p>
 <p>There were 2,288 series (385,445 slices) from Siemens, GE, or Philips
 without any private scan datetime tags. Out of these, the proposed
-strategy lead to more than one reference time per series in only 2
-series (0.1%). Furthermore, the resulting reference time was never after
-the Acquisition Time (0.0%). in contrast, Series Time was after
-Acquisition Time in 10,594 slices (2.7%) from 92 series.</p>
+strategy led to more than one reference time per series in only 2 series
+(0.1%). Furthermore, the resulting reference time was never after the
+Acquisition Time (0.0%). in contrast, Series Time was after Acquisition
+Time in 10,594 slices (2.7%) from 92 series.</p>
 <p>There were 375 series where the Manufacturer (0008,0070) attribute
 did not contain any of the names of the three previously mentioned
-scanner manufacturers. In 279 (74.4%) of these series, the strategy lead
+scanner manufacturers. In 279 (74.4%) of these series, the strategy led
 to one reference time which was before acquisition time in all series.
 These included all series with values “Codonics” (N=2), “CTI / MIMvista”
 (N=1), or “PixelMed” (N=33) in the Manufacturer (0008,0070) attribute.
 The Siemens/Philips formula was used in case the Acquisition Time was
 not equal to the Series Time. In series with Manufacturer = “CPS”, the
-strategy lead to multiple reference times in 96/192 (50.0%) cases.</p>
+strategy led to multiple reference times in 96/192 (50.0%) cases.</p>
 <p>The DecayFactor (0054,1321) attribute value corresponded to
 correction by the Frame Reference Time for all Siemens scans (100.0%).
 For GE, it corresponded to the sum of Frame Reference Time and
@@ -1405,7 +1406,7 @@ DRO342 (Philips)</li>
 <li>incorrect formula for voxel value decay correction or dose
 correction is used;</li>
 <li>the voxel values and the administered dose are not corrected to the
-same timepoint.</li>
+same time point.</li>
 </ul></li>
 <li><p>DRO35x Decay Correction = “START”, private tags absent and Series
 Time != Acquisition Time</p>
@@ -1438,7 +1439,7 @@ MBq are highly unlikely.</p>
 <p><strong><em>If conversion from Bq/ml to SUV<sub>bw</sub> is required,
 the Decay Correction (0054,1102) attribute should be checked that it is
 present and has one of these values: “ADMIN”, “START”, “NONE”;
-otherwise, SUV can not be computed.</em></strong></p>
+otherwise, SUV cannot be computed.</em></strong></p>
 <p>Justification: Decay Correction method applied to the images must be
 known for conversion to SUV.</p>
 <p><strong><em>In images where conversion from Bq/ml to SUV<sub>bw</sub>
@@ -1446,27 +1447,26 @@ is required and Decay Correction (0054,1102) is set to “ADMIN” do not
 require dose correction and the conversion formula is independent of the
 Manufacturer (0008,0070) attribute value.</em></strong></p>
 <p>Justification: Scans with Decay Correction = “ADMIN” contain images
-corrected to the timepoint when the radionuclide was administered and
+corrected to the time point when the radionuclide was administered and
 its dose does not need to be corrected.</p>
 <p><strong><em>If conversion from Bq/ml to SUV<sub>bw</sub> is required
 and Decay Correction (0054,1102) is set to “START” or “NONE”, dose
 correction is required.</em></strong></p>
 <p>Scans with Decay Correction = “START” or “NONE” store values at a
-different timepoint and the dose can be corrected to this timepoint.
+different time point and the dose can be corrected to this time point.
 Another option is decay-correcting the images to the radionuclide
-administration or correcting both the dose and image to another
-timepoint. However, the selected method has no effect on
-SUV<sub>bw</sub> and other methods are not implemented in these
-recommendations.</p>
+administration or correcting both the dose and image to another time
+point. However, the selected method has no effect on SUV<sub>bw</sub>
+and other methods are not implemented in these recommendations.</p>
 <p><strong><em>In images where dose correction is required and Decay
 Correction (0054,1102) is set to “START” and the Manufacturer
 (0008,0070) attribute contains “SIEMENS”, the dose should be corrected
 to the time stored in the private scan datetime (0071,1022) if it is
 present and has a non-negative value.</em></strong></p>
 <p>Justification: The private scan datetime is used by Siemens scanners
-for decay correction and, based on our observations, represents the most
-reliable source of the reference time. In contrast, Series Time and the
-earliest Acquisition Time (0008,0032) within a series show lower
+for decay correction and. Based on our observations, it represents the
+most reliable source of the reference time. In contrast, Series Time and
+the earliest Acquisition Time (0008,0032) within a series show lower
 reliability, as demonstrated above, and are therefore not
 recommended.</p>
 <p><strong><em>In images where dose correction is required and Decay
@@ -1475,7 +1475,7 @@ Correction (0054,1102) is set to “START” and the Manufacturer
 time stored in the private scan datetime (0009,100D) if it is present
 and has a non-negative value.</em></strong></p>
 <p>Justification: The private scan datetime is used by GE scanners for
-decay correction and, based on our observations, represents the most
+decay correction. Based on our observations, it represents the most
 reliable source of the reference time.</p>
 <p><strong><em>If dose correction is required and Decay Correction
 (0054,1102) is set to “START” and the previous two conditions are not
@@ -1517,14 +1517,14 @@ as indirect evidence, such as the values of the Decay Factor (0054,1321;
 GE) and GE private scan datetime (0009,100D; GE).</p>
 <p><strong><em>If dose correction is required and Decay Correction
 (0054,1102) is set to “NONE” and the Manufacturer (0008,0070) attribute
-contains “SIEMENS” or “GE” or “Philips”, the dose can to be corrected to
+contains “SIEMENS” or “GE” or “Philips”, the dose can be corrected to
 the time the voxel values correspond to.</em></strong> <strong><em>In
-that case, an identical, above mentioned formula can be used for all
+that case, an identical, aforementioned equation can be used for all
 these cases.</em></strong></p>
 <p>Justification: For Siemens, Philips, and GE, the voxel values of
 non-decay-corrected images should always correspond to values at the
 time Acquisition Time + T<sub>ave</sub> so the dose can be corrected to
-this timepoint, which may differ between slices / frames.</p>
+this time point, which may differ between slices / frames.</p>
 <p><strong><em>Dose correction and all other computations shall be
 applied on a per-slice basis, using only attributes associated with the
 respective slice, and shall not depend on values from other
@@ -1544,7 +1544,7 @@ combination of these manufacturers, we cannot recommend any strategy. In
 such cases, SUV computation cannot be verified.</em></strong></p>
 <p>Justification: Different manufacturers may implement reference time
 (the time to which voxel values are decay-corrected) and measurement
-time (the time the original values occured) differently. For CPS
+time (the time the original values occurred) differently. For CPS
 scanners, significant inconsistencies were observed. Currently, we lack
 sufficient data and technical information for other manufacturers to
 provide reliable guidance.</p>
@@ -1575,12 +1575,12 @@ to occur more than one hour after the start of acquisition.</p>
 </div>
 <div id="metadata-analysis-5" class="section level3">
 <h3>Metadata analysis</h3>
-<p>Among the examined data, 1869 series (60 %) included only the
+<p>Among the data examined, 1869 series (60.2%) included only the
 Radiopharmaceutical Start Time without an associated date, 1031 series
-(33 %) included both values, and 205 series (7 %) included neither.
+(33.2%) included both values, and 205 series (6.6%) included neither.
 There was only 1 case in which only Radiopharmaceutical Start DateTime
-was present, which may be due to the fact that the other attribute was
-deprecated only recently.</p>
+was present, which may be because the other attribute was deprecated
+only recently.</p>
 <p>Out of 1032 series with both attributes available, the
 Radiopharmaceutical Start Time and the time component of
 Radiopharmaceutical Start DateTime differed in 13 series (1.3%), but the
@@ -1594,11 +1594,10 @@ common offset was the Radiopharmaceutical Start Date one day after
 Acquisition Date (101 cases, 47.6%). The Radiopharmaceutical Start
 DateTime differed from the Series Date in 217 out of 1032 cases (21.0%).
 This demonstrates that these attributes are often subject to
-modification and therefore cannot be considered inherently
-reliable..</p>
+modification and therefore cannot be considered inherently reliable.</p>
 <p>There were two series with Radiopharmaceutical Start Date one day
 before Acquisition Date. However, the times differed by 63 and 66
-minutes, so the acquisition most likely occured on the same day as
+minutes, so the acquisition most likely occurred on the same day as
 radiotracer administration. 37 series contained slices with Acquisition
 Time before Radiopharmaceutical Start Time. All were dynamic scans from
 the “ACRIN-FLT-BREAST” collection. The highest time offset between
@@ -1633,7 +1632,7 @@ midnight, only Radiopharmaceutical Start Time provided)</p>
 <p><strong><em>The time of radiotracer administration should be
 extracted from the attributes Radiopharmaceutical Start DateTime
 (0018,1078) or Radiopharmaceutical Start Time (0018,1072).</em></strong>
-<strong><em>If one of the attributes in absent, empty, or negative, the
+<strong><em>If one of the attributes is absent, empty, or negative, the
 other attribute should be used.</em></strong>
 <strong><em>Radiopharmaceutical Start DateTime (0018,1078) should be
 used preferentially if both attributes are present and none of them is
@@ -1643,13 +1642,13 @@ computation is not possible.</em></strong></p>
 <p>Justification: The time of radiotracer administration is required for
 dose and voxel value correction, i.e., as explained above, for all scans
 where Decay Correction is “START” or “NONE”. Both attributes store the
-time information. Value truncation was observed occassionally by
+time information. Value truncation was observed occasionally by
 Radiopharmaceutical Start DateTime.</p>
-<p><strong><em>It must be accounted for cases, where radiotracer was
-administered on the day preceding the day the scan was
-acquired.</em></strong> <strong><em>Such cases should be recognised by a
-positive time difference between the time of radiotracer administration
-and Acquisition Time (0008,0032) higher than +3600
+<p><strong><em>There may be cases where radiotracer was administered on
+the day preceding the day the scan was acquired.</em></strong>
+<strong><em>Such cases should be recognized by a positive time
+difference between the time of radiotracer administration and
+Acquisition Time (0008,0032) higher than +3600
 seconds.</em></strong></p>
 <p>Justification: In rare cases, radiotracer may be administered before
 image acquisition. Since the date may be modified and is not reliable,
@@ -2578,13 +2577,37 @@ computation.</caption>
 </tr>
 <tr class="even">
 <td align="left">units</td>
-<td align="left">DRO_2_1</td>
+<td align="left">DRO_2_1_0</td>
 <td align="left">Units = GML with PatientSex = “M” (male) corresponding
 to SUVlbmjames128</td>
 </tr>
 <tr class="odd">
 <td align="left">units</td>
-<td align="left">DRO_2_2</td>
+<td align="left">DRO_2_1_1</td>
+<td align="left">Units = GML with PatientSex = “F” (female)
+corresponding to SUVlbmjames128</td>
+</tr>
+<tr class="even">
+<td align="left">units</td>
+<td align="left">DRO_2_1_2</td>
+<td align="left">Units = GML with PatientSex = “O” (other) corresponding
+to SUVlbmjames128</td>
+</tr>
+<tr class="odd">
+<td align="left">units</td>
+<td align="left">DRO_2_2_0</td>
+<td align="left">Units = GML with PatientSex = “M” (male) corresponding
+to SUV IBW</td>
+</tr>
+<tr class="even">
+<td align="left">units</td>
+<td align="left">DRO_2_2_1</td>
+<td align="left">Units = GML with PatientSex = “F” (female)
+corresponding to SUV IBW</td>
+</tr>
+<tr class="odd">
+<td align="left">units</td>
+<td align="left">DRO_2_2_2</td>
 <td align="left">Units = GML with PatientSex = “O” (other) corresponding
 to SUV IBW</td>
 </tr>
@@ -2604,47 +2627,112 @@ to SUV IBW</td>
 <td align="left">Units = CNTS using Philips activity scale factor</td>
 </tr>
 <tr class="odd">
+<td align="left">units</td>
+<td align="left">DRO_2_6_0</td>
+<td align="left">Units = GML with PatientSex = “M” (male) corresponding
+to SUVlbmjanma</td>
+</tr>
+<tr class="even">
+<td align="left">units</td>
+<td align="left">DRO_2_6_1</td>
+<td align="left">Units = GML with PatientSex = “F” (female)
+corresponding to SUVlbmjanma</td>
+</tr>
+<tr class="odd">
+<td align="left">units</td>
+<td align="left">DRO_2_6_2</td>
+<td align="left">Units = GML with PatientSex = “O” (other) corresponding
+to SUVlbmjanma</td>
+</tr>
+<tr class="even">
 <td align="left">dose</td>
 <td align="left">DRO_3_0</td>
 <td align="left">dose in MBq</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">dose</td>
 <td align="left">DRO_3_1</td>
 <td align="left">DC = ADMIN</td>
 </tr>
-<tr class="odd">
-<td align="left">dose</td>
-<td align="left">DRO_3_2</td>
-<td align="left">DC = START but SeriesTime after AcquisitionTime</td>
-</tr>
 <tr class="even">
 <td align="left">dose</td>
-<td align="left">DRO_3_3</td>
-<td align="left">GE private DC datetime</td>
+<td align="left">DRO_3_2_0</td>
+<td align="left">DC = START but SeriesTime after AcquisitionTime
+SIEMENS</td>
 </tr>
 <tr class="odd">
 <td align="left">dose</td>
-<td align="left">DRO_3_4</td>
-<td align="left">DC = NONE + multiple values ACQ TIME</td>
+<td align="left">DRO_3_2_1</td>
+<td align="left">DC = START but SeriesTime after AcquisitionTime GE</td>
 </tr>
 <tr class="even">
+<td align="left">dose</td>
+<td align="left">DRO_3_2_2</td>
+<td align="left">DC = START but SeriesTime after AcquisitionTime
+PHILIPS</td>
+</tr>
+<tr class="odd">
+<td align="left">dose</td>
+<td align="left">DRO_3_3_0</td>
+<td align="left">DC = START but SeriesTime after AcquisitionTime private
+tag present SIEMENS</td>
+</tr>
+<tr class="even">
+<td align="left">dose</td>
+<td align="left">DRO_3_3_1</td>
+<td align="left">DC = START but SeriesTime after AcquisitionTime private
+tag present GE</td>
+</tr>
+<tr class="odd">
+<td align="left">dose</td>
+<td align="left">DRO_3_4_0</td>
+<td align="left">DC = NONE + multiple values ACQ TIME SIEMENS</td>
+</tr>
+<tr class="even">
+<td align="left">dose</td>
+<td align="left">DRO_3_4_1</td>
+<td align="left">DC = NONE + multiple values ACQ TIME GE</td>
+</tr>
+<tr class="odd">
+<td align="left">dose</td>
+<td align="left">DRO_3_4_2</td>
+<td align="left">DC = NONE + multiple values ACQ TIME PHILIPS and Units
+= CNTS</td>
+</tr>
+<tr class="even">
+<td align="left">dose</td>
+<td align="left">DRO_3_5_0</td>
+<td align="left">DC = START but SeriesTime = AcquisitionTime
+SIEMENS</td>
+</tr>
+<tr class="odd">
+<td align="left">dose</td>
+<td align="left">DRO_3_5_1</td>
+<td align="left">DC = START but SeriesTime = AcquisitionTime GE</td>
+</tr>
+<tr class="even">
+<td align="left">dose</td>
+<td align="left">DRO_3_5_2</td>
+<td align="left">DC = START but SeriesTime = AcquisitionTime
+PHILIPS</td>
+</tr>
+<tr class="odd">
 <td align="left">rptime</td>
 <td align="left">DRO_4_0</td>
 <td align="left">only radiopharmaceutical datetime, no RP Date and RP
 time</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">rptime</td>
 <td align="left">DRO_4_1</td>
 <td align="left">only radiopharmaceutical time, no RP datetime</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">rptime</td>
 <td align="left">DRO_4_2</td>
 <td align="left">Sparing midnight</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">halflife</td>
 <td align="left">DRO_5_0</td>
 <td align="left">Radionuclide Ga68</td>
