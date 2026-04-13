@@ -5,6 +5,9 @@ For that, we are developing a set of [digital reference objects (DROs)](https://
 
 ## Changelog
 
+#### [v2.0.1] - 2026-04-13
+A voxel value error was corrected in DRO_2_1_x and DRO_2_2_x.
+
 #### [v2.0.0] - 2026-04-10
 DROs
 - Several DROs now include multiple versions for different values of Patient Sex or Manufacturer (where relevant).
