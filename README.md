@@ -6,10 +6,10 @@ For that, we are developing a set of [digital reference objects (DROs)](https://
 ## Changelog
 
 #### [v2.0.2] - 2026-04-15
-The BMI equation and a voxel value error was corrected in DRO_2_6_x.
+Fixed bugs in DRO_2_6_x, DRO_3_2_x, DRO_3_3_x, DRO_3_4_x, DRO_3_5_x.
 
 #### [v2.0.1] - 2026-04-13
-A voxel value error was corrected in DRO_2_1_x and DRO_2_2_x.
+Fixed bugs in DRO_2_1_x and DRO_2_2_x.
 
 #### [v2.0.0] - 2026-04-10
 DROs
