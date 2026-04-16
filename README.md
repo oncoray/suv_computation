@@ -5,8 +5,8 @@ For that, we are developing a set of [digital reference objects (DROs)](https://
 
 ## Changelog
 
-#### [v2.0.2] - 2026-04-15
-Fixed bugs in DRO_2_6_x, DRO_3_2_x, DRO_3_3_x, DRO_3_4_x, DRO_3_5_x, DRO_4_2.
+#### [v2.0.2] - 2026-04-16
+Fixed bugs in DRO_2_6_x, DRO_3_2_x, DRO_3_3_x, DRO_3_4_x, DRO_3_5_x, DRO_4_2. Fixed typos in manual and flowchart.
 
 #### [v2.0.1] - 2026-04-13
 Fixed bugs in DRO_2_1_x and DRO_2_2_x.
