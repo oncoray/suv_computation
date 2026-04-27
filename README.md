@@ -5,6 +5,9 @@ For that, we are developing a set of [digital reference objects (DROs)](https://
 
 ## Changelog
 
+#### [v2.0.3] - 2026-04-27
+Fixed StudyInstanceUID in all RTSTRUCT files. Small fixes in the flowchart legend.
+
 #### [v2.0.2] - 2026-04-16
 Fixed bugs in DRO_2_6_x, DRO_3_2_x, DRO_3_3_x, DRO_3_4_x, DRO_3_5_x, DRO_4_2. Fixed typos in manual and flowchart.
 
