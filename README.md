@@ -7,13 +7,14 @@ For that, we are developing a set of [digital reference objects (DROs)](https://
 
 #### [v3.0.0] - 2026-07-16
 Manual:
-- changed the range of allowed values for Rescale Slope (0028,1053), Rescacle Intercept (0028,1052), and Units (0054,1001).
-- added vendor-neutral strategy for determining scan start datetime
-- added detailed strategy for scans where administration adte differs from acquisition date
+- changed the range of allowed values for Rescale Slope (0028,1053) and Rescale Intercept (0028,1052)
+- changed the range of allowed values forand Units (0054,1001) - strategy for "CPS" and "CNTS" without private Philips rescale factors was removed
+- added vendor-neutral strategy for determining scan start datetime and improved justification for the proposed scan start datetime strategy
+- added detailed strategy for scans where administration date differs from acquisition date
 - added strategy for the Enhanced PET Image Storage and a short comment for the Legacy Converted Image Storage 
 - added a short comment on computing other SUV types
-- added (updated) flowcharts  for SUV computation as well as tables with required attributes
-- several other minor changes to all parts of the Results section
+- added / updated flowcharts for SUV computation as well as tables with required attributes
+- several other minor factual and stylistic changes
 
 DROs
 - added DROs 3_2_3, 3_4_3, and 3_5_3 with Manufacturer = "SYNTHETIC" for testing "vendor-neutral" strategy

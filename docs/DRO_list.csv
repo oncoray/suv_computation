@@ -1,6 +1,6 @@
 "Section","ID","Description","SUVmin_expected","SUVmed_expected","SUVmax_expected","SUVmin_measured","SUVmed_measured","SUVmax_measured"
 "default","DRO_0_0","Default DRO of the Positron Emission Tomography Image Storage SOP class","0.20","1.00","4.00",,,
-"rescaleslope","DRO_1_0","multiple values Rescale Slope ","0.20","1.00","4.00",,,
+"rescale","DRO_1_0","multiple values Rescale Slope ","0.20","1.00","4.00",,,
 "units","DRO_2_0","Units are ""GML"" corresponding to SUVbw","0.20","1.00","4.00",,,
 "units","DRO_2_1_0","Units are ""GML"" with Patient's Sex is “M” corresponding to SUVlbmjames128","0.20","1.00","4.00",,,
 "units","DRO_2_1_1","Units are ""GML"" with Patient's Sex is “F” corresponding to SUVlbmjames128","0.20","1.00","4.00",,,

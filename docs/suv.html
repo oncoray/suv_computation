@@ -1575,9 +1575,7 @@ real-world PET human imaging series via two sources:</p>
 <li>our internal imaging archives</li>
 <li><a href="10.1007/s10278-013-9622-7">The Cancer Imaging Archive</a>
 Radiology Portal, where we identified 33 cohorts containing relevant PET
-imaging data:</li>
-</ul>
-<p><a href="https://doi.org/10.7937/K9/TCIA.2017.ol20zmxg">ACRIN-FLT-Breast</a>,
+imaging data: <a href="https://doi.org/10.7937/K9/TCIA.2017.ol20zmxg">ACRIN-FLT-Breast</a>,
 <a href="https://doi.org/10.7937/tcia.2019.30ilqfcl">ACRIN-NSCLC-FDG-PET</a>,
 <a href="https://doi.org/10.7937/tcia.2019.zjjwb9ip">Anti-PD-1_Lung</a>,
 <a href="http://doi.org/10.7937/K9/TCIA.2015.SDNRQXXR">BREAST-DIAGNOSIS</a>,
@@ -1596,7 +1594,8 @@ PET-CT</a>, <a href="http://doi.org/10.7937/K9/TCIA.2015.7GO2GSKS">Soft-tissue-S
 <a href="https://doi.org/10.7937/K9/TCIA.2016.YXOGLM4Y">TCGA-PRAD</a>,
 <a href="https://doi.org/10.7937/K9/TCIA.2016.9ZFRVF1B">TCGA-THCA</a>,
 <a href="https://doi.org/10.7937/K9/TCIA.2016.GKJ0ZWAC">TCGA-UCEC</a>,
-and <a href="https://doi.org/10.7937/ghkn-md15">VAREPOP-APOLLO</a>.</p>
+and <a href="https://doi.org/10.7937/ghkn-md15">VAREPOP-APOLLO</a>.</li>
+</ul>
 <p>We excluded imaging series without attenuation correction and
 detector normalization applied, as well as series with only one frame
 within, maximum intensity projections and other reprojections. For all
@@ -1614,7 +1613,7 @@ center manual</a>, <a href="https://arxiv.org/pdf/2410.13348">USZ
 technical note</a>), our expertise, and the metadata analysis, we
 summarized the rules for computing SUV<sub>bw</sub> within DICOM PET
 images. The recommendations apply to clinical PET images belonging to
-the Positron Emission Tomography Service-Object Pair (SOP) Class, i.e,
+the Positron Emission Tomography Service-Object Pair (SOP) Class, i.e.,
 series with a SOP Class UID (0008,0016) value
 “1.2.840.10008.5.1.4.1.1.128”. Recommendations for other SUV types and
 other SOP classes, including the Enhanced PET SOP class, are summarized
@@ -1798,7 +1797,7 @@ always zero. The Rescale Slope always had a positive value.</p>
 <p>The following DRO was constructed:</p>
 <ul>
 <li>DRO_1_0 containing multiple values of the Rescale Slope attribute.
-Typical issues contain:
+Potential problems are:
 <ul>
 <li>Rescale Slope is not applied frame-wise</li>
 </ul></li>
@@ -2082,7 +2081,7 @@ difference: 0.05%).</p>
 SUV<sub>bw</sub>:</p>
 <ul>
 <li>DRO_2_0 where Units are “GML” (corresponding to SUV<sub>bw</sub>).
-Typical issues contain:
+Potential problems are:
 <ul>
 <li>unit GML is not implemented;</li>
 <li>SUV Type is required (while it should be considered “BW” by
@@ -2091,8 +2090,8 @@ default)</li>
 </ul></li>
 <li>DRO_2_1_x where Units are “GML” (corresponding to SUV LBMJAMES128),
 coming in three variations: DRO_2_1_0 (Patient’s Sex = “M”), DRO_2_1_1
-(Patient’s Sex = “F”), DRO_2_1_2 (Patient’s Sex = “O”). Typical issues
-contain:
+(Patient’s Sex = “F”), DRO_2_1_2 (Patient’s Sex = “O”). Potential
+problems are:
 <ul>
 <li>SUVlbm is not implemented or an incorrect LBM formula is used
 (instead of LBMJAMES128);</li>
@@ -2102,16 +2101,16 @@ correctly;</li>
 </ul></li>
 <li>DRO_2_2_x where Units are “GML” (corresponding to SUV IBW), coming
 in three variations: DRO_2_2_0 (Patient’s Sex = “M”), DRO_2_2_1
-(Patient’s Sex = “F”), DRO_2_2_2 (Patient’s Sex = “O”). Typical issues
-contain:
+(Patient’s Sex = “F”), DRO_2_2_2 (Patient’s Sex = “O”). Potential
+problems are:
 <ul>
 <li>SUVibw is not implemented or an incorrect formula is used;</li>
 <li>SUV type, patient’s weight, height, or sex are not extracted
 correctly;</li>
 <li>strategy for Patient’s Sex = “O” is not implemented.</li>
 </ul></li>
-<li>DRO_2_3 where Units are “CM2ML” (corresponding to SUVbsa). Typical
-issues contain:
+<li>DRO_2_3 where Units are “CM2ML” (corresponding to SUVbsa). Potential
+problems are:
 <ul>
 <li>unit CM2ML or SUVbsa are not implemented or an incorrect formula is
 used;</li>
@@ -2119,22 +2118,22 @@ used;</li>
 correctly.</li>
 </ul></li>
 <li>DRO_2_4 where Units are “CNTS”, with the Philips SUV scale factor
-present. Typical issues contain:
+present. Potential problems are:
 <ul>
 <li>unit CNTS is not implemented;<br />
 </li>
 <li>SUV scale factor is not extracted or applied correctly.</li>
 </ul></li>
 <li>DRO_2_5 where Units are “CNTS”, with the Philips activity scale
-factor present. Typical issues contain:
+factor present. Potential problems are:
 <ul>
 <li>unit CNTS is not implemented;</li>
 <li>activity scale factor is not extracted or applied correctly.</li>
 </ul></li>
 <li>DRO_2_6_x where Units are GML (corresponding to SUV LBMJANMA),
 coming in three variations: DRO_2_6_0 (PatientSex = “M”), DRO_2_6_1
-(PatientSex = “F”), DRO_2_6_2 (PatientSex = “O”). Typical issues
-contain:
+(PatientSex = “F”), DRO_2_6_2 (PatientSex = “O”). Potential problems
+are:
 <ul>
 <li>SUVlbmjanma is not implemented or an incorrect LBM formula is used
 (instead of LBMJANMA);</li>
@@ -2300,7 +2299,7 @@ applied).</p>
 <p>The value “ADMIN” indicates that the PET image data were
 decay-corrected to the time of radiotracer administration. In this case,
 the decay-correction reference datetime is the administration datetime,
-i.e, no additional correction of the administered dose is required,
+i.e., no additional correction of the administered dose is required,
 because it already represents the dose at the time point to which the
 voxel values were decay-corrected. The formula is vendor-independent and
 can be written as:</p>
@@ -2511,7 +2510,7 @@ applicable to Philips)?</li>
 <li>Is the resulting time consistent in all frames of the series, and is
 it not after Acquisition Time in any frame?</li>
 </ul>
-<p>Additonally, regarding the measurement time, we evaluated:</p>
+<p>Additionally, regarding the measurement time, we evaluated:</p>
 <ul>
 <li>In non-decay-corrected images, to what time point do the voxel
 values correspond?</li>
@@ -2551,7 +2550,7 @@ frames, the general back-computation formula led to time equal to the
 private scan start time in all cases (100.0%).</p>
 <p>In total, there were 10 series where SeriesTime was identical to the
 private scan start datetime, but the proposed strategy (rules 2 and 3)
-would yield another time. In constrat, there were 128 series where
+would yield another time. In contrast, there were 128 series where
 SeriesTime differed from the private scan start datetime, but the time
 resulting from the proposed strategy (rules 2 and 3) was identical to
 the private scan start datetime. In 122 out of these 128 cases, the
@@ -2622,12 +2621,12 @@ Date/Time + T<sub>ave</sub> (= measurement time).</p>
 <h4>Digital reference object</h4>
 <p>Following DROs for decay correction alternatives were created:</p>
 <ul>
-<li>DRO_3_0 where dose is stored in MBq. Typical issues contain:
+<li>DRO_3_0 where dose is stored in MBq. Potential problems are:
 <ul>
 <li>the dose is considered in Bq.</li>
 </ul></li>
-<li>DRO_3_1 where Decay Correction is set to “ADMIN”. Typical issues
-contain:
+<li>DRO_3_1 where Decay Correction is set to “ADMIN”. Potential problems
+are:
 <ul>
 <li>Decay Correction = “ADMIN” is not implemented.</li>
 </ul></li>
@@ -2635,7 +2634,7 @@ contain:
 decay-correction datetime attributes are absent, and Series Date/Time is
 not equal to Acquisition Date/Time. Coming in four variations for
 vendors: DRO_3_2_0 (Siemens), DRO_3_2_1 (GE), DRO_3_2_2 (Philips),
-DRO_3_2_3 (Synthetic). Typical issues contain:
+DRO_3_2_3 (Synthetic). Potential problems are:
 <ul>
 <li>dose is corrected to the Series Date/Time or to the Acquisition
 Date/Time;</li>
@@ -2644,8 +2643,8 @@ are not implemented.</li>
 </ul></li>
 <li>DRO_3_3_x where Decay Correction is set to “START”, private
 decay-correction datetime attributes are present, coming in two
-variations for two vendors: DRO_3_3_0 (Siemens), DRO_3_3_1 (GE). Typical
-issues contain:
+variations for two vendors: DRO_3_3_0 (Siemens), DRO_3_3_1 (GE).
+Potential problems are:
 <ul>
 <li>the GE / Siemens private scan start datetime is not
 implemented.</li>
@@ -2655,7 +2654,7 @@ scan start datetime</li>
 <li>DRO_3_4_x where Decay Correction is set to “NONE” with multiple
 values of Acquisition Date/Time. Coming in four variations for vendors:
 DRO_3_4_0 (Siemens), DRO_3_4_1 (GE), DRO_3_4_2 (Philips), DRO_3_4_3
-(Synthetic). Typical issues contain:
+(Synthetic). Potential problems are:
 <ul>
 <li>Decay Correction = “NONE” is not implemented;</li>
 <li>incorrect formula for voxel value decay correction or dose
@@ -2667,7 +2666,7 @@ the same time point.</li>
 decay-correction datetime attributes are absent and Series Date/Time is
 equal to Acquisition Date/Time. Coming in four variations for vendors:
 DRO_3_5_0 (Siemens), DRO_3_5_1 (GE), DRO_3_5_2 (Philips), DRO_3_5_3
-(Synthetic). Typical issues contain:
+(Synthetic). Potential problems are:
 <ul>
 <li>Acquisition Date/Time is not used when Acquisition Date/Time =
 Series Date/Time.</li>
@@ -2897,41 +2896,41 @@ Acquisition Time and Radiopharmaceutical Start Time was 166 seconds.</p>
 <p>Following objects were created:</p>
 <ul>
 <li>DRO_4_0 where only the Radiopharmaceutical Start DateTime is present
-and the Radiopharmaceutical Start Time is absent. Typical issues
-contain:
+and the Radiopharmaceutical Start Time is absent. Potential problems
+are:
 <ul>
 <li>the Radiopharmaceutical Start Time is required.</li>
 </ul></li>
 <li>DRO_4_1 where only the Radiopharmaceutical Start Time is present,
-and the Radiopharmaceutical Start DateTime is absent. Typical issues
-contain:
+and the Radiopharmaceutical Start DateTime is absent. Potential problems
+are:
 <ul>
 <li>the Radiopharmaceutical Start DateTime is required.</li>
 </ul></li>
 <li>DRO_4_2 with radiotracer administered before midnight and scanned
 after midnight. The Radiopharmaceutical Start Datetime is absent.
-Typical issues contain:
+Potential problems are:
 <ul>
 <li>the Radiopharmaceutical Start Time and the time component of the
 decay-correction reference time are not compared.</li>
 </ul></li>
 <li>DRO_4_3 with radiotracer administered before midnight and scanned
 after midnight. The Radiopharmaceutical Start Datetime is present.
-Typical issues contain:
+Potential problems are:
 <ul>
 <li>date components of Radiopharmaceutical Start DateTime and the
 decay-correction reference datetime are not compared.</li>
 </ul></li>
 <li>DRO_4_4 with radiotracer administered before midnight and scanned
 after midnight. The Radiopharmaceutical Start Datetime is present but
-the Acquisition Date was anonymized. Typical issues contain:
+the Acquisition Date was anonymized. Potential problems are:
 <ul>
 <li>the Radiopharmaceutical Start DateTime and the decay-correction
 reference datetime offset is used even when one of the dates is changed
 or when both dates are shifted by different time offsets.</li>
 </ul></li>
 <li>DRO_4_5 with a long-lived radionuclide - the uptake time spans more
-than one day. Typical issues contain:
+than one day. Potential problems are:
 <ul>
 <li>the Radiopharmaceutical Start DateTime and decay-correction
 reference datetime are not compared;</li>
@@ -3106,7 +3105,7 @@ half-life values were truncated.</caption>
 <p>To check that radionuclide half-life is taken into account when
 SUV<sub>bw</sub> is computed, the following DROs were constructed:</p>
 <ul>
-<li>DRO_5_0 with Ga-68 used as the radionuclide. Typical issues contain:
+<li>DRO_5_0 with Ga-68 used as the radionuclide. Potential problems are:
 <ul>
 <li>radionuclide half-life is not extracted correctly from
 RadionuclideHalfLife;</li>
@@ -3182,30 +3181,30 @@ DateTime (0018,1078).</li>
 <p>To verify that the Enhanced PET SOP Class is quantified correctly,
 the following DROs were constructed:</p>
 <ul>
-<li>DRO_7_0_0 default DRO of the Enhanced PET SOP class. Typical issues
-contain:
+<li>DRO_7_0_0 default DRO of the Enhanced PET SOP class. Potential
+problems are:
 <ul>
 <li>Enhanced PET SOP Class is not implemented</li>
 <li>stored voxel values or units are not interpreted correctly</li>
 </ul></li>
 <li>DRO_7_1_0 with multiple values of Real World Value Slope Slope.
-Typical issues contain:
+Potential problems are:
 <ul>
 <li>per-frame rescale slope is not applied correctly</li>
 </ul></li>
 <li>DRO_7_2_0 with units corresponding to g/ml (SUV<sub>bw</sub>).
-Typical issues contain:
+Potential problems are:
 <ul>
 <li>units code is not interpreted correctly</li>
 </ul></li>
 <li>DRO_7_3_0 with Decay Corrected set to “YES” and series and
-acquisition datetimes after Decay Correction DateTime. Typical issues
-contain:
+acquisition datetimes after Decay Correction DateTime. Potential
+problems are:
 <ul>
 <li>Decay Correction DateTime is not used as decay-correction reference
 time (scan start time) for dose correction</li>
 </ul></li>
-<li>DRO_7_3_1 with Decay Corrected set to “NO”. Typical issues contain:
+<li>DRO_7_3_1 with Decay Corrected set to “NO”. Potential problems are:
 <ul>
 <li>Frame Reference Datetime is not used as the decay-correction
 reference time (measurement time) for dose correction</li>
@@ -3221,7 +3220,7 @@ Class.</em></strong></p>
 (0040,9096) containing sufficient information for conversion to SUV or
 Bq/ml must be present;</em></strong> <strong><em>otherwise,
 SUV<sub>bw</sub> computation is not possible.</em></strong>
-<strong><em>The information consists of rescaling data, i.e, the Real
+<strong><em>The information consists of rescaling data, i.e., the Real
 World Value Slope (0040,9225) and Real World Value Intercept (0040,9224)
 or the Real World Value LUT Data (0040,9212)</em></strong>
 <strong><em>and the physical units, specified in the Measurement Units
@@ -3259,10 +3258,10 @@ corresponding physical units using</em></strong> <strong><em>the Rescale
 Intercept (0028,1052) and Rescale Slope (0028,1053) from the Pixel Value
 Transformation Sequence (0028,9145).</em></strong></p>
 <p>Justification: An alternative that is similar to the Positron
-Emission Tomography SOP Class. Rescale Type (0028, 1054) is used to
-indicate the physical units of the stored values. However, it is a
-fallback option as the attribute is supposed to be unspecified for PET
-(“US”).</p>
+Emission Tomography SOP Class. Rescale Type (0028, 1054) could
+potentially be used to indicate the physical units of the stored values.
+However, it is a fallback option as the attribute is supposed to be
+unspecified for PET (“US”).</p>
 <p><strong><em>If the conversion between SUV types is required, the
 Patient’s Weight (0010,1030) and the Patient’s Size (0010,1020) must
 have a positive, non-zero value; otherwise, SUV<sub>bw</sub> computation
@@ -3295,9 +3294,9 @@ Decay Corrected (0018,9758) is “YES”, Decay Correction DateTime
 not possible.</em></strong> <strong><em>The dose should be corrected to
 this time.</em></strong></p>
 <p>Justification: These attributes simplify the determination of the
-decay-correction reference time. Independently on vendor, the
-decay-correction reference datetime for decay-corrected images is stored
-in this attribute.</p>
+decay-correction reference time. The decay-correction reference datetime
+for decay-corrected images is stored in this attribute and allows for
+computing SUV values independent of vendor.</p>
 <p><strong><em>If dose correction is required and Decay Corrected
 (0018,9758) is “NO” and Frame Reference DateTime (0018,9151) is present,
 this datetime corresponds to the time at which the average activity
@@ -3386,19 +3385,17 @@ SUV can be multiplied by the corresponding factor and divided by the
 patient’s weight:</p>
 <p><span class="math display">\[
 \text{SUV}_{lbmjames128} = \frac{\text{SUV}_{bw}  \,
-\text{LBM}_{james128} \, 10^{3}}{\text  W}
+\text{LBM}_{james128} \, 10^{3}}{W}
 \]</span></p>
 <p><span class="math display">\[
 \text{SUV}_{lbmjanma} = \frac{\text{SUV}_{bw}  \, \text{LBM}_{janma} \,
-10^{3}}{\text  W}
+10^{3}}{W}
 \]</span></p>
 <p><span class="math display">\[
-\text{SUV}_{ibw} = \frac{\text{SUV}_{bw}  \, \text{IBW} \,
-10^{3}}{\text  W}
+\text{SUV}_{ibw} = \frac{\text{SUV}_{bw}  \, \text{IBW} \, 10^{3}}{W}
 \]</span></p>
 <p><span class="math display">\[
-\text{SUV}_{bsa} = \frac{\text{SUV}_{bw}  \, \text{BSA} \,
-10^{4}}{\text  W}
+\text{SUV}_{bsa} = \frac{\text{SUV}_{bw}  \, \text{BSA} \, 10^{4}}{W}
 \]</span></p>
 <p>Note that computing these SUV types may change which attributes are
 required. As an example, Patient’s Size (0010,1020) is required for all
@@ -3422,10 +3419,9 @@ Correction = START.</p>
 the scope to cover multiple acquisition and metadata scenarios and can
 therefore support consistent and reproducible implementation of SUV
 computation across software platforms and institutions – an aspect that
-is particularly critical in multi-center studies. Addittionaly, a
-precise specification of the conditions and methodology for SUV
-computation will facilitate fully automated research and clinical
-pipelines.</p>
+is particularly critical in multi-center studies. Additionaly, a precise
+specification of the conditions and methodology for SUV computation will
+facilitate fully automated research and clinical pipelines.</p>
 <p>As a limitation, the analysis and resulting recommendations are
 partially restricted to three vendors, as data from other vendors were
 sparse or unavailable both in the metadata analysis and in the
@@ -4006,7 +4002,7 @@ computation.</caption>
 Storage SOP class</td>
 </tr>
 <tr class="even">
-<td align="left">rescaleslope</td>
+<td align="left">rescale</td>
 <td align="left">DRO_1_0</td>
 <td align="left">multiple values Rescale Slope</td>
 </tr>
