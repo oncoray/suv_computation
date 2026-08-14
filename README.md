@@ -5,6 +5,9 @@ For that, we are developing a set of [digital reference objects (DROs)](https://
 
 ## Changelog
 
+#### [v3.0.1] - 2026-08-10
+Several DICOM attributes were modified to improve compatibility, particularly in the RTSTRUCT files; these changes should not affect computed values.
+
 #### [v3.0.0] - 2026-07-16
 Manual:
 - changed the range of allowed values for Rescale Slope (0028,1053) and Rescale Intercept (0028,1052)
