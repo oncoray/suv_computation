@@ -1,0 +1,18 @@
+Section,ID,Description,SUVmin_expected,SUVmed_expected,SUVmax_expected,SUVmin_measured,SUVmed_measured,SUVmax_measured
+default,DRO_0_0,default DRO with Units = BQML and DC = START,0.2,1,4,0.2,1.000001,4.000005
+rescaleslope,DRO_1_0,multiple values Rescale Slope ,0.2,1,4,0.2,1.000001,4.000005
+units,DRO_2_0,Units = GML (corresponding to SUVbw),0.2,1,4,0.2,1,4
+units,DRO_2_1,Units = GML with PatientSex = “M” (male) corresponding to SUVlbmjames128,0.2,1,4,0.161,0.807,3.229
+units,DRO_2_2,Units = GML with PatientSex = “O” (other) corresponding to SUV IBW,0.2,1,4,0.198,0.99,3.966
+units,DRO_2_3,Units = CM2ML corresponding to SUVbsa,0.2,1,4,,,
+units,DRO_2_4,Units = CNTS using Philips SUV scale factor,0.2,1,4,,,
+units,DRO_2_5,Units = CNTS using Philips activity scale factor,0.2,1,4,,,
+dose,DRO_3_0,dose in MBq,0.2,1,4,200000.249972,1000001.249858,4000004.999434
+dose,DRO_3_1,DC = ADMIN,0.2,1,4,,,
+dose,DRO_3_2,DC = START but SeriesTime after AcquisitionTime,0.2,1,4,0.199979,0.999896,3.999584
+dose,DRO_3_3,GE private DC datetime,0.2,1,4,0.2,1.000001,4.000005
+dose,DRO_3_4,DC = NONE + multiple values ACQ TIME ,0.2,1,4,,,
+rptime,DRO_4_0,"only radiopharmaceutical datetime, no RP Date and RP time",0.2,1,4,0.2,1.000001,4.000005
+rptime,DRO_4_1,"only radiopharmaceutical time, no RP datetime",0.2,1,4,0.2,1.000001,4.000005
+rptime,DRO_4_2,Sparing midnight,0.2,1,4,,,
+halflife,DRO_5_0,Radionuclide Ga68,0.2,1,4,0.199792,1.000016,4.000066
