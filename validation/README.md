@@ -1,0 +1,1 @@
+This folder contains real-world data for SUv computation validation and is released under CC BY 3.0 (see LICENSE.txt).
