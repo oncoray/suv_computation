@@ -1,9 +1,15 @@
 # Standardizing SUV Computation (IBSI-SUV)
 
 Our goal is to standardize how DICOM PET images are converted to standardized uptake values (SUVs) – an essential step in PET image analysis. 
-For that, we are developing a set of [digital reference objects (DROs)](https://github.com/oncoray/suv_computation/blob/main/DRO) together with a [manual](https://oncoray.github.io/suv_computation/suv.html) including usage instructions.
+
+For that, we are developing a [manual](https://oncoray.github.io/suv_computation/suv.html) for SUV computation and a set of synthetic [digital reference objects (DROs)](https://github.com/oncoray/suv_computation/blob/main/DRO) verifying correct implementation of the rules.
+
+Finally, a [validation dataset](https://github.com/oncoray/suv_computation/blob/main/validation) checks that different implementations lead to the same values even when real-world clinical PET series are used.
 
 ## Changelog
+
+#### [v3.1.0] - 2026-09-14
+A validation dataset was published, containing several real-world PET series (PET-DICOM) together with corresponding ROIs (stored as NIfTI binary mask).
 
 #### [v3.0.1] - 2026-08-10
 Several DICOM attributes were modified to improve compatibility, particularly in the RTSTRUCT files; these changes should not affect computed values.
@@ -74,7 +80,7 @@ The DRO DICOM directory includes a mask subdirectory with a NIfTI mask for featu
 
 Please report issues or provide feedback by contacting:
 - [Michael Vácha](mailto:m.vacha@hzdr.de)
-- [Alex Zwanenburg](mailto:alexander.zwanenburg@nct-dresden.de)
+- [Alex Zwanenburg](mailto:alex.zwanenburg@tu-dresden.de)
 
 We welcome feedback on:
 - Extracted SUV values
@@ -83,7 +89,9 @@ We welcome feedback on:
 
 ## License
 
-The manual and the digital reference objects (DROs) are licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+The documentation and the digital reference objects (DROs) are licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+
+The validation dataset uses data from The Cancer Imaging Archive (see `validation/attribution.md`) and is licenced under [CC BY 3.0](https://creativecommons.org/licenses/by/3.0/).
 
 **© 2026 Michael Vácha & Alex Zwanenburg & The image biomarker standardisation initiative (IBSI)**
 
