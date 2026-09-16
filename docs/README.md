@@ -1,0 +1,1 @@
+This folder contains documentation for SUV computation and is released under CC BY 4.0 (see LICENSE.txt).
