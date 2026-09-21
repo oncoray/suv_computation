@@ -2,13 +2,13 @@
 
 Our goal is to standardize how DICOM PET images are converted to standardized uptake values (SUVs) – an essential step in PET image analysis. 
 
-For that, we are developing a [manual](https://oncoray.github.io/suv_computation/suv.html) for SUV computation and a set of synthetic [digital reference objects (DROs)](https://github.com/oncoray/suv_computation/blob/main/DRO) verifying correct implementation of the rules.
+For that, we are developing a [manual](https://oncoray.github.io/suv_computation/suv.html) for SUV computation and a set of synthetic [digital reference objects (DROs)](DRO) verifying correct implementation of the rules.
 
-Finally, a [validation dataset](https://github.com/oncoray/suv_computation/blob/main/validation) checks that different implementations lead to the same values even when real-world clinical PET series are used.
+Finally, a [validation dataset](validation) checks that different implementations lead to the same values even when real-world clinical PET series are used.
 
 ## Changelog
 
-#### [v3.1.0] - 2026-09-14
+#### [v3.1.0] - 2026-09-21
 A validation dataset was published, containing several real-world PET series (PET-DICOM) together with corresponding ROIs (stored as NIfTI binary mask).
 
 #### [v3.0.1] - 2026-08-10
