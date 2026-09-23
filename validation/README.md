@@ -1,4 +1,4 @@
-This folder contains real-world data for SUV computation validation, that were released under CC BY 3.0 (see [license.txt](license.txt)) through The Cancer Imaging Archive (see [attribution.md](attribution.md)).
+This folder contains real-world data for SUV computation validation, that were released under CC BY 3.0 (see [license.txt](license.txt)) through The Cancer Imaging Archive (see attribution file within each patient directory).
 
 Instructions:
 - Each patient directory contains a DICOM PET series (PT) and a NIfTI binary mask (mask).

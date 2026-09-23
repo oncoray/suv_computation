@@ -8,7 +8,7 @@ Finally, a [validation dataset](validation) checks that different implementation
 
 ## Changelog
 
-#### [v3.1.0] - 2026-09-21
+#### [v3.1.0] - 2026-09-23
 A validation dataset was published, containing several real-world PET series (PET-DICOM) together with corresponding ROIs (stored as NIfTI binary mask).
 
 #### [v3.0.1] - 2026-08-10
